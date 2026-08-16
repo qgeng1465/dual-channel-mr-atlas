@@ -12,7 +12,7 @@
 import csv, os
 import numpy as np
 
-RES = "/data/qiushuogeng/projects/dual-channel-mr-atlas/results"
+RES = "<repo-root>/results"
 
 def f(x, d=float('nan')):
     try: return float(x)

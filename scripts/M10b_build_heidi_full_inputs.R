@@ -27,11 +27,11 @@
 #   （data/smr/trans_esd/、data/smr/trans_flist.txt、data/smr/eqtlgen_trans.*、
 #   data/smr/trans_{t2d,cad,fbg}.ma）。
 #
-# 用法：PATH=/data/gengqiushuo/home/miniconda3/envs/r-mr/bin:$PATH \
+# 用法：PATH=<conda-root>/r-mr/bin:$PATH \
 #       Rscript scripts/M10b_build_heidi_full_inputs.R
 # =============================================================================
 suppressMessages(library(data.table))
-proj   <- "/data/qiushuogeng/projects/dual-channel-mr-atlas"
+proj   <- "<repo-root>"
 gdir   <- file.path(proj, "results/grid")
 LDREF  <- file.path(proj, "data/ldref/1kg.v3/EUR")
 OUT    <- file.path(proj, "data/smr")

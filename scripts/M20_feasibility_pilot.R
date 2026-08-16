@@ -16,7 +16,7 @@ suppressMessages({
   library(data.table)
   suppressPackageStartupMessages(library(coloc))
 })
-proj <- "/data/qiushuogeng/projects/dual-channel-mr-atlas"
+proj <- "<repo-root>"
 res  <- file.path(proj, "results")
 gdir <- file.path(res, "grid")
 GWAS <- file.path(proj, "data/opengwas/full")

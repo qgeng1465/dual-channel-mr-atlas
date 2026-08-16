@@ -23,7 +23,7 @@ for f in font_manager.fontManager.ttflist:
         break
 plt.rcParams["axes.unicode_minus"] = False
 
-RES = "/data/qiushuogeng/projects/dual-channel-mr-atlas/results"
+RES = "<repo-root>/results"
 OUT = f"{RES}/figures"
 os.makedirs(OUT, exist_ok=True)
 

@@ -5,15 +5,17 @@
 # English-label figures.
 #   Output: docs/manuscript/AJHG_submission_Qiushuo_Geng_20260816.docx
 # Formatting per AJHG author guidelines (2026-08-16 revision):
-#   - No separate title page (author instruction): title + author + affiliation + running title
+#   - Author-edited title page format (title, author with superscript markers,
+#     affiliations, #/* legend) rendered from the manuscript title block
 #   - Times New Roman, 12 pt, double-spaced main text
 #   - Numeric superscript citations ([@key] -> superscript number)
 #   - Abstract <=200 words
 #   - IMRaD sections, then Data and Code Availability, Web Resources,
 #     Declaration of Interests, Funding
 #   - References in NLM style (numbered by first citation order)
-#   - Embedded figures (9 + S1), each with its full legend beneath (AJHG style)
-#   - One three-line table (Table 1) with caption and note
+#   - Embedded figures (5 + S1), each with its full legend beneath (AJHG style)
+#   - Three-line tables: Table 1 (data sources + yield summary, merged),
+#     Table 2 (candidates), and supplemental Tables S1-S4 in Supplemental Items
 # =============================================================================
 import json, os, re
 
@@ -24,7 +26,8 @@ from docx.enum.table import WD_TABLE_ALIGNMENT
 from docx.oxml.ns import qn
 from docx.oxml import OxmlElement
 
-BASE = "/data/qiushuogeng/projects/dual-channel-mr-atlas"
+# Repo root is self-locating so the script runs from any checkout.
+BASE = os.path.abspath(os.path.join(os.path.dirname(os.path.abspath(__file__)), ".."))
 DOCS = f"{BASE}/docs/manuscript"
 FIGD = f"{BASE}/results/figures"
 OUTP = f"{DOCS}/AJHG_submission_Qiushuo_Geng_20260816.docx"
@@ -40,8 +43,8 @@ FIG_FILES = {
 }
 S1_FILE = f"{FIGD}/20260816_FigS1_susie.png"
 
-# combined inline tokenizer: **bold**, *italic*, [@key]
-INLINE = re.compile(r"(\*\*[^*]+\*\*|\*[^*]+\*|\[@[a-z0-9]+\])")
+# combined inline tokenizer: **bold**, *italic*, [@key], <sup>…</sup>
+INLINE = re.compile(r"(\*\*[^*]+\*\*|\*[^*]+\*|\[@[a-z0-9]+\]|<sup>[^<]*</sup>)")
 
 def set_style_base(doc):
     style = doc.styles["Normal"]
@@ -55,6 +58,73 @@ def set_style_base(doc):
     rfonts.set(qn("w:ascii"), "Times New Roman")
     rfonts.set(qn("w:hAnsi"), "Times New Roman")
     rfonts.set(qn("w:eastAsia"), "Times New Roman")
+
+def _set_rfonts_tnr(rfonts):
+    """Force every rFonts element to Times New Roman and drop theme-font attributes."""
+    if rfonts is None:
+        return
+    for attr in ("w:ascii", "w:hAnsi", "w:eastAsia", "w:cs"):
+        rfonts.set(qn(attr), "Times New Roman")
+    for attr in ("w:asciiTheme", "w:hAnsiTheme", "w:eastAsiaTheme", "w:cstheme"):
+        a = qn(attr)
+        if rfonts.get(a) is not None:
+            del rfonts.attrib[a]
+
+def force_times_new_roman(doc):
+    """Post-build pass: make every text element render in Times New Roman.
+    Word resolves fonts from (1) docDefaults, (2) the run's style, (3) the run's
+    own rPr. python-docx's font.name only sets w:ascii/w:hAnsi, leaving the theme
+    attributes (e.g. asciiTheme='minorHAnsi' = Calibri) in place, which Word
+    prefers. This clears theme attributes everywhere and sets all four ranges."""
+    # 1) docDefaults -> rPrDefault -> rFonts
+    styles_el = doc.styles.element
+    dd = styles_el.find(qn("w:docDefaults"))
+    if dd is None:
+        dd = OxmlElement("w:docDefaults"); styles_el.insert(0, dd)
+    rpd = dd.find(qn("w:rPrDefault"))
+    if rpd is None:
+        rpd = OxmlElement("w:rPrDefault"); dd.append(rpd)
+    rpr = rpd.find(qn("w:rPr"))
+    if rpr is None:
+        rpr = OxmlElement("w:rPr"); rpd.append(rpr)
+    rf = rpr.find(qn("w:rFonts"))
+    if rf is None:
+        rf = OxmlElement("w:rFonts"); rpr.insert(0, rf)
+    _set_rfonts_tnr(rf)
+
+    # 2) every style (python-docx handles rPr insertion order for styles)
+    for st in doc.styles:
+        try:
+            st.font.name = "Times New Roman"
+        except Exception:
+            continue
+        rpr = st.element.find(qn("w:rPr"))
+        if rpr is not None:
+            rf = rpr.find(qn("w:rFonts"))
+            if rf is not None:
+                _set_rfonts_tnr(rf)
+
+    # 3) every run in every paragraph (body + tables, incl. nested)
+    def fix_para(p):
+        for r in p.runs:
+            rpr = r._r.get_or_add_rPr()
+            rf = rpr.find(qn("w:rFonts"))
+            if rf is None:
+                rf = OxmlElement("w:rFonts"); rpr.append(rf)
+            _set_rfonts_tnr(rf)
+    def fix_cell(c):
+        for p in c.paragraphs:
+            fix_para(p)
+        for nt in c.tables:
+            for row2 in nt.rows:
+                for c2 in row2.cells:
+                    fix_cell(c2)
+    for p in doc.paragraphs:
+        fix_para(p)
+    for t in doc.tables:
+        for row in t.rows:
+            for c in row.cells:
+                fix_cell(c)
 
 def add_run(p, text, bold=False, italic=False, superscript=False, font_size=12):
     r = p.add_run(text)
@@ -87,6 +157,8 @@ def add_inline(p, text, font_size=12, base_bold=False):
             add_run(p, tok[2:-2], bold=True, font_size=font_size)
         elif tok.startswith("*"):
             add_run(p, tok[1:-1], italic=True, font_size=font_size)
+        elif tok.startswith("<sup>"):
+            add_run(p, tok[5:-6], bold=base_bold, superscript=True, font_size=font_size)
         pos = m.end()
     if pos < len(text):
         add_run(p, text[pos:], bold=base_bold, font_size=font_size)
@@ -134,13 +206,20 @@ def add_three_line_table(doc, header, rows, font_size=10):
         set_cell_borders(cell, top=12, bottom=6)
     for i, row in enumerate(rows, start=1):
         last = (i == len(rows))
+        is_sub = row[0].strip().startswith("**")
+        prev_is_sub = (i > 1) and rows[i - 2][0].strip().startswith("**")
         for j, v in enumerate(row):
             cell = t.cell(i, j)
             cell.text = ""
             p = cell.paragraphs[0]
             p.paragraph_format.space_after = Pt(2)
-            add_inline(p, v, font_size=font_size)
-            set_cell_borders(cell, bottom=(12 if last else 0))
+            add_inline(p, v, font_size=font_size, base_bold=is_sub)
+            if is_sub:
+                set_cell_borders(cell, top=12, bottom=6)
+            elif prev_is_sub:
+                set_cell_borders(cell, bottom=12)
+            else:
+                set_cell_borders(cell, bottom=(12 if last else 0))
     return t
 
 def add_caption(doc, text):
@@ -157,12 +236,34 @@ def add_note(doc, text):
     set_double(p)
     add_inline(p, text, font_size=10)
 
-def add_figure_page(doc, fig_num, img_path, legend_text):
+def add_figure_page(doc, label, img_path, legend_text):
     doc.add_page_break()
     p = doc.add_paragraph(); p.alignment = WD_ALIGN_PARAGRAPH.CENTER
     run = p.add_run(); run.add_picture(img_path, width=Inches(6.3))
     cap = doc.add_paragraph(); set_double(cap)
-    add_inline(cap, f"**Figure {fig_num}.** " + legend_text, font_size=11)
+    add_inline(cap, f"**{label}.** " + legend_text, font_size=11)
+
+def render_title_block(doc, md_text):
+    """Render the manuscript title block (text before the first '---' separator)
+    in the exact format of the author-edited DOCX title page:
+    title (bold), author name (regular weight) with superscript affiliation
+    markers, 'Affiliations:' label, affiliation lines, then the # / * legend."""
+    block = md_text.split("\n---\n", 1)[0]
+    for ln in block.split("\n"):
+        s = ln.strip()
+        if not s or s.startswith(">"):
+            continue
+        if s.startswith("# "):
+            p = doc.add_paragraph(); set_double(p)
+            add_run(p, s[2:].strip(), bold=True, font_size=14)
+        elif s == "Affiliations:":
+            p = doc.add_paragraph(); set_double(p)
+            add_run(p, "Affiliations: ", bold=True, font_size=10.5)
+        else:
+            p = doc.add_paragraph(); set_double(p)
+            # author name is regular weight in the target format: drop ** markers
+            s = re.sub(r"\*\*(.+?)\*\*", r"\1", s)
+            add_inline(p, s)
 
 def parse_refs():
     refs = {}
@@ -245,16 +346,9 @@ def main():
     sections = split_sections(md_text)
     by_name = {name: lines for name, lines in sections}
 
-    # ---------- Title (no separate title page per author instruction) ----------
-    title = "A transcriptome-wide cis-MR and colocalization atlas for type 2 diabetes, coronary artery disease, and fasting glucose: operating characteristics and candidate effector genes"
-    p = doc.add_paragraph(); p.alignment = WD_ALIGN_PARAGRAPH.CENTER; set_double(p)
-    add_run(p, title, bold=True, font_size=14)
-    p = doc.add_paragraph(); p.alignment = WD_ALIGN_PARAGRAPH.CENTER; set_double(p)
-    add_run(p, "Qiushuo Geng", bold=True)
-    p = doc.add_paragraph(); p.alignment = WD_ALIGN_PARAGRAPH.CENTER; set_double(p)
-    add_run(p, "School of Medical Devices, Shenyang Pharmaceutical University, Benxi 117004, China")
-    p = doc.add_paragraph(); p.alignment = WD_ALIGN_PARAGRAPH.CENTER; set_double(p)
-    add_run(p, "Running title: Transcriptome-wide cis-MR × coloc atlas for metabolic traits")
+    # ---------- Title block (author-edited format: title, author with superscript
+    #            affiliation markers, affiliations, #/* legend) ----------
+    render_title_block(doc, md_text)
     doc.add_paragraph()
 
     # ---------- Main body (Abstract, numbered sections, data availability, web/declaration/funding) ----------
@@ -319,33 +413,33 @@ def main():
             print(f"  !! missing legend for Figure {num}")
         img = FIG_FILES[num]
         if os.path.exists(img):
-            add_figure_page(doc, num, img, legend)
+            add_figure_page(doc, f"Figure {num}", img, legend)
         else:
             print(f"  !! missing figure image: {img}")
 
-    # Supplemental Fig S1 (resource snapshot)
-    doc.add_page_break()
-    p = doc.add_paragraph(); p.alignment = WD_ALIGN_PARAGRAPH.CENTER
-    run = p.add_run(); run.add_picture(S1_FILE, width=Inches(6.3))
-    cap = doc.add_paragraph(); set_double(cap)
-    add_inline(cap, "**Supplemental Figure S1.** coloc.susie sensitivity of strong-colocalization calls. "
-                    "Paired coloc.abf vs coloc.susie PP.H4 for the six adjudicated loci (RBM6×T2D, CNNM2×CAD, "
-                    "PLAUR×CAD, CD101×T2D, RIC8A×CAD, LAMC1×CAD). SuSiE credible-set counts per side and "
-                    "non-convergence markers (✗, all runs) are annotated. LAMC1×CAD (abf PP.H4 = 0.9139 → "
-                    "SuSiE 0.0000) is highlighted; it is excluded from the candidate set on independent FDR and "
-                    "multi-signal grounds. Because coloc.susie did not converge under external LD for any tested "
-                    "locus, SuSiE posteriors are reported as exploratory only and are not used for primary inference.",
-               font_size=11)
-
-    # ---------- Supplemental Items ----------
+    # ---------- Supplemental Items (Tables S1-S4 + Fig S1, at the end of the manuscript) ----------
     doc.add_page_break()
     add_heading(doc, "Supplemental Items", 1)
     if "Supplemental Items" in by_name:
         for kind, payload in parse_paragraph_blocks(by_name["Supplemental Items"]):
-            if kind in ("p", "list"):
+            if kind == "p":
+                if payload.startswith("**Supplemental Figure S1."):
+                    legend = payload[len("**Supplemental Figure S1.**"):].strip()
+                    add_figure_page(doc, "Supplemental Figure S1", S1_FILE, legend)
+                elif payload.startswith("**Table S"):
+                    add_caption(doc, payload)
+                else:
+                    p = doc.add_paragraph(); set_double(p)
+                    p.paragraph_format.left_indent = Inches(0.35)
+                    add_inline(p, payload)
+            elif kind == "table":
+                add_three_line_table(doc, payload[0], payload[1:])
+            elif kind == "list":
                 p = doc.add_paragraph(); set_double(p)
                 p.paragraph_format.left_indent = Inches(0.35)
                 add_inline(p, payload)
+
+    force_times_new_roman(doc)
 
     doc.save(OUTP)
     print("Saved:", OUTP)

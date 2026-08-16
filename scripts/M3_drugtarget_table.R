@@ -10,7 +10,7 @@
 # 纪律：严格描述性；不结论"成药模态"（M0 红线）；显式声明"血浆 pQTL 轴 ≠ 药物靶点蛋白轴"。
 # =============================================================================
 suppressMessages({library(data.table)})
-proj <- "/data/qiushuogeng/projects/dual-channel-mr-atlas"
+proj <- "<repo-root>"
 res  <- file.path(proj, "results")
 
 a <- fread(file.path(res, "grid/transcript_drugtarget_avail.csv"))

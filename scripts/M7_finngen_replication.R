@@ -12,7 +12,7 @@
 # 产物：results/grid/finngen_replication.csv
 # =============================================================================
 suppressMessages({library(data.table); suppressPackageStartupMessages(library(TwoSampleMR))})
-proj <- "/data/qiushuogeng/projects/dual-channel-mr-atlas"
+proj <- "<repo-root>"
 gdir <- file.path(proj, "results", "grid")
 log <- function(...) cat("[", format(Sys.time(), "%H:%M:%S"), "] ", ..., "\n", sep = "")
 OUT_FULL <- c(t2d = "ebi-a-GCST006867", cad = "ebi-a-GCST005194", fbg = "ebi-a-GCST005186")

@@ -7,9 +7,9 @@
 # 输出：results/feasibility_20260815.md（人读摘要）
 # =============================================================================
 set -u
-PROJ="/data/qiushuogeng/projects/dual-channel-mr-atlas"
+PROJ="<repo-root>"
 RES="$PROJ/results"
-RENV="/data/gengqiushuo/home/miniconda3/envs/r-mr/bin"
+RENV="<conda-root>/r-mr/bin"
 log(){ echo "[$(date '+%Y-%m-%d %H:%M:%S')] $*"; }
 mkdir -p "$PROJ/tmp"   # 重定向 M20/M21 日志前必须先建目录，否则 `> tmp/M20.log` 直接失败
 
@@ -31,7 +31,7 @@ log "M19 下载完成"
 # 2. 试点 coloc（CPU 绑定）
 # 注意：R/fread 临时文件走 tempdir()，认 TMPDIR（不认 R_TMPDIR）→ 必须指向 /data
 #（根盘 50G 满，/tmp/Rtmp* 曾致 fread 管道缓冲 No space left on device）
-export TMPDIR=/data/qiushuogeng/tmp/rtmp
+export TMPDIR=<scratch>/rtmp
 PATH="$RENV/bin:$PATH" "$RENV/Rscript" "$PROJ/scripts/M20_feasibility_pilot.R" \
   > "$PROJ/tmp/M20.log" 2>&1
 log "M20 试点 coloc 结束（rc=$?）→ tmp/M20.log"

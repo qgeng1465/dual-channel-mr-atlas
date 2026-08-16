@@ -4,10 +4,10 @@
 # =============================================================================
 # v2 改动（2026-08-15 16:10）：v1 按基因块 awk 抽取，3 进程并发扫同一 4.3G gz，
 #   每块 12-14 分钟太慢。改为：eQTLGen full 已由 M23b 一次抽取为按染色体明文
-#   （/data/qiushuogeng/tmp/eqtlgen_stable/bychr/chr{1..22}.tsv），本脚本按染色体
+#   （<scratch>/eqtlgen_stable/bychr/chr{1..22}.tsv），本脚本按染色体
 #   fread 明文块处理，无重复解压、内存 ~1-2GB/进程。
 # 健全性：MR sig 集内 strong（PP.H4≥0.8）应与 transcript_coloc_hits.csv 的 106 一致。
-# 用法：PATH=$R_ENV/bin:$PATH TMPDIR=/data/qiushuogeng/tmp/rtmp \
+# 用法：PATH=$R_ENV/bin:$PATH TMPDIR=<scratch>/rtmp \
 #         Rscript scripts/M23_full_scan.R t2d|cad|fbg
 # 输出：results/coloc_full_{outcome}_20260815.csv
 # =============================================================================
@@ -18,11 +18,11 @@ suppressMessages({
 args <- commandArgs(trailingOnly = TRUE)
 on <- args[1]
 if (is.na(on) || !on %in% c("t2d", "cad", "fbg")) stop("用法: M23_full_scan.R t2d|cad|fbg")
-proj <- "/data/qiushuogeng/projects/dual-channel-mr-atlas"
+proj <- "<repo-root>"
 res  <- file.path(proj, "results")
 gdir <- file.path(res, "grid")
 GWAS <- file.path(proj, "data/opengwas/full")
-STABLE <- "/data/qiushuogeng/tmp/eqtlgen_stable"
+STABLE <- "<scratch>/eqtlgen_stable"
 SIG   <- file.path(STABLE, "cis-EQTL-significant.txt.gz")
 AF    <- file.path(STABLE, "SNP_AF.txt.gz")
 BYCHR <- file.path(STABLE, "bychr")

@@ -29,7 +29,7 @@ import matplotlib.pyplot as plt
 from matplotlib.patches import FancyBboxPatch, FancyArrowPatch, Rectangle
 from scipy.stats import gaussian_kde
 
-RES = "/data/qiushuogeng/projects/dual-channel-mr-atlas/results"
+RES = "<repo-root>/results"
 GRID = f"{RES}/grid"
 OUT = f"{RES}/figures"
 os.makedirs(OUT, exist_ok=True)
@@ -159,7 +159,7 @@ def fig2():
         lambda r: (str(r["gene"]), str(r["outcome"])) in known_keys, axis=1)
     # hg19 坐标：m25 有新候选坐标；known 从 grid top_snp 查 1kg bim
     bim = {}
-    for line in open("/data/qiushuogeng/projects/dual-channel-mr-atlas/data/ldref/1kg.v3/EUR.bim"):
+    for line in open("<repo-root>/data/ldref/1kg.v3/EUR.bim"):
         p = line.split(); bim[p[1]] = (int(p[0]), int(p[3]))
     m25 = pd.read_csv(f"{RES}/m25_new_strong_annotation_20260816.csv")
     m25_key = {(row.gene, row.outcome): (row.chr_hg19, row.pos_hg19) for row in m25.itertuples()}

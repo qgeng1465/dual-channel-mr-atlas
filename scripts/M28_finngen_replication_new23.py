@@ -23,7 +23,7 @@ import gzip, csv, os, sys
 import pandas as pd
 import numpy as np
 
-PROJ = "/data/qiushuogeng/projects/dual-channel-mr-atlas"
+PROJ = "<repo-root>"
 RES  = f"{PROJ}/results"
 SIG  = f"{PROJ}/data/eqtlgen/cis-eQTL-significant.txt.gz"
 FINN = f"{PROJ}/data/finngen"

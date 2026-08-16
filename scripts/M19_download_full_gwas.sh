@@ -8,7 +8,7 @@
 # 注意：系统盘满，所有输出必须落 /data（本脚本在项目 data/ 下）。
 # =============================================================================
 set -u
-PROJ="/data/qiushuogeng/projects/dual-channel-mr-atlas"
+PROJ="<repo-root>"
 OUT="$PROJ/data/opengwas/full"
 mkdir -p "$OUT"
 PROXY="http://127.0.0.1:7890"

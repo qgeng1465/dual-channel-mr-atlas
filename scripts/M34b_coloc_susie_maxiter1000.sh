@@ -13,11 +13,11 @@
 # 用法：bash scripts/M34b_coloc_susie_maxiter1000.sh
 # =============================================================================
 set -e
-cd /data/qiushuogeng/projects/dual-channel-mr-atlas
-R_ENV=/data/gengqiushuo/home/miniconda3/envs/r-mr
+cd <repo-root>
+R_ENV=<conda-root>/r-mr
 PLINK=tools/plink
 EUR=data/ldref/1kg.v3/EUR
-TMP=/data/qiushuogeng/tmp/susie
+TMP=<scratch>/susie
 mkdir -p $TMP
 OUT=results/m34b_coloc_susie_maxiter1000_20260816.csv
 echo "gene,symbol,outcome,mr_p,abf_pp4,susie_pp4,n_snps,note" > $OUT
@@ -44,10 +44,10 @@ for L in $LOCI; do
 import sys, os, numpy as np
 ensg, sym, out, chrS, pos, tag = sys.argv[1:7]
 chrS, pos = int(chrS), int(pos)
-TMP = "/data/qiushuogeng/tmp/susie"
+TMP = "<scratch>/susie"
 LO, HI = max(pos-600000, 1), pos+600000
 bim = {}
-with open("/data/qiushuogeng/projects/dual-channel-mr-atlas/data/ldref/1kg.v3/EUR.bim") as f:
+with open("<repo-root>/data/ldref/1kg.v3/EUR.bim") as f:
     for line in f:
         p = line.split()
         if int(p[0])==chrS and LO <= int(p[3]) <= HI:
@@ -61,7 +61,7 @@ if R.size != n*n:
 R = R.reshape(n, n)
 # eQTL：该基因 cis 行
 eq = {}
-with os.popen(f"awk -F'\\t' '$7==\"{ensg}\"' /data/qiushuogeng/tmp/eqtlgen_stable/bychr/chr{chrS}.tsv") as f:
+with os.popen(f"awk -F'\\t' '$7==\"{ensg}\"' <scratch>/eqtlgen_stable/bychr/chr{chrS}.tsv") as f:
     for line in f:
         p = line.rstrip("\n").split("\t")
         if len(p) < 6: continue
@@ -70,7 +70,7 @@ with os.popen(f"awk -F'\\t' '$7==\"{ensg}\"' /data/qiushuogeng/tmp/eqtlgen_stabl
             eq[snp] = (p[4], p[5], z)
 # GWAS：区域 rsid 匹配（t2d/cad 用 hm_ 列）
 g = {}
-with os.popen(f"zcat /data/qiushuogeng/projects/dual-channel-mr-atlas/data/opengwas/full/{out}_full.gz") as f:
+with os.popen(f"zcat <repo-root>/data/opengwas/full/{out}_full.gz") as f:
     hdr = f.readline().rstrip("\n").split("\t")
     ci = {c: i for i, c in enumerate(hdr)}
     ri, ei, oi, bi, sei = ci["hm_rsid"], ci["hm_effect_allele"], ci["hm_other_allele"], ci["hm_beta"], ci["standard_error"]
@@ -121,8 +121,8 @@ PYEOF
 args <- commandArgs(trailingOnly=TRUE)
 sym <- args[1]; ensg <- args[2]; out <- args[3]; tag <- args[4]
 suppressMessages({library(coloc); library(susieR)})
-TMP <- "/data/qiushuogeng/tmp/susie"
-RES <- "/data/qiushuogeng/projects/dual-channel-mr-atlas/results"
+TMP <- "<scratch>/susie"
+RES <- "<repo-root>/results"
 z1 <- as.numeric(readLines(file.path(TMP, paste0(tag, "_z1.txt"))))
 z2 <- as.numeric(readLines(file.path(TMP, paste0(tag, "_z2.txt"))))
 R  <- as.matrix(read.table(file.path(TMP, paste0(tag, "_R.txt"))))

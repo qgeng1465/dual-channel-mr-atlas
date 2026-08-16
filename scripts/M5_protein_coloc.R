@@ -33,7 +33,7 @@ suppressMessages({
   suppressPackageStartupMessages(library(coloc))
   library(jsonlite); library(httr)
 })
-proj <- "/data/qiushuogeng/projects/dual-channel-mr-atlas"
+proj <- "<repo-root>"
 res  <- file.path(proj, "results")
 gdir <- file.path(res, "grid")
 SUB  <- file.path(proj, "data/decode/sub")

@@ -19,7 +19,7 @@ suppressMessages({
   suppressPackageStartupMessages(library(ieugwasr))
   library(jsonlite)
 })
-proj <- "/data/qiushuogeng/projects/dual-channel-mr-atlas"
+proj <- "<repo-root>"
 res  <- file.path(proj, "results")
 dir.create(file.path(res, "grid"), recursive = TRUE, showWarnings = FALSE)
 log <- function(...) cat("[", format(Sys.time(), "%H:%M:%S"), "] ", ..., "\n")

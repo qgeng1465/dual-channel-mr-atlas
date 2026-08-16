@@ -13,7 +13,7 @@
 #     ivw_fe / weighted_median / egger；nsnp=1 → Wald 退化（诚实标注）
 #   - 多重检验：stage-2 结果集内按结局再算 BH-FDR（诚实双报 nominal + q）
 #   - 全网格落盘含空/失败行；不选择性报告
-# 用法：cd 项目 && PATH=/data/gengqiushuo/home/miniconda3/envs/r-mr/bin:$PATH \
+# 用法：cd 项目 && PATH=<conda-root>/r-mr/bin:$PATH \
 #       Rscript scripts/M3_transcript_grid_stage2.R
 # 输入：results/grid/transcript_grid_hits.csv（982 hits）
 #        data/eqtlgen/*.txt.gz（本地）| 结局 OpenGWAS API（proxies=FALSE）
@@ -31,7 +31,7 @@ suppressMessages({
   library(jsonlite)
   library(parallel)
 })
-proj <- "/data/qiushuogeng/projects/dual-channel-mr-atlas"
+proj <- "<repo-root>"
 res  <- file.path(proj, "results")
 dir.create(file.path(res, "grid"), recursive = TRUE, showWarnings = FALSE)
 log <- function(...) cat("[", format(Sys.time(), "%H:%M:%S"), "] ", ..., "\n")

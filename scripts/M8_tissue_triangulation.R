@@ -21,7 +21,7 @@ suppressMessages({
   library(data.table)
   suppressPackageStartupMessages(library(TwoSampleMR))
 })
-proj <- "/data/qiushuogeng/projects/dual-channel-mr-atlas"
+proj <- "<repo-root>"
 res  <- file.path(proj, "results")
 GTEX <- file.path(proj, "data/gtex")
 dir.create(file.path(res, "grid"), recursive = TRUE, showWarnings = FALSE)

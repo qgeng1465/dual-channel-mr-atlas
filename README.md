@@ -6,7 +6,7 @@
 
 A reproducible, transcriptome-wide **cis-MR × Bayesian colocalization** atlas for **type 2 diabetes (T2D)**, **coronary artery disease (CAD)**, and **fasting glucose (FG)**. The project quantifies the *operating characteristics* of transcriptome-wide cis-Mendelian randomization (cis-MR) as a gene-prioritization screen, provides a calibrated colocalization atlas as a public resource, and identifies candidate effector genes with orthogonal (MR + coloc + directional-replication) support.
 
-> **Note on the analysis version.** The per-outcome BH-FDR pipeline ("FDR-core", finalized 2026-08-16) is the authoritative analysis and the one used in the manuscript. All submission-facing numbers are governed by [`docs/FACTS_20260816.md`](docs/FACTS_20260816.md).
+> **Note on the analysis version.** The per-outcome BH-FDR pipeline ("FDR-core", finalized 2026-08-16) is the authoritative analysis and the one used in the manuscript. All submission-facing numbers appear in [`docs/manuscript/manuscript.md`](docs/manuscript/manuscript.md) and the result tables in `results/`.
 
 ---
 
@@ -51,9 +51,7 @@ Genome-wide association studies (GWAS) have identified hundreds of loci for type
 
 - [`docs/manuscript/manuscript.md`](docs/manuscript/manuscript.md) — full manuscript source (title page, abstract, IMRaD, tables, figures, references).
 - [`docs/manuscript/AJHG_submission_Qiushuo_Geng_20260816.docx`](docs/manuscript/AJHG_submission_Qiushuo_Geng_20260816.docx) — formatted submission document.
-- [`docs/FACTS_20260816.md`](docs/FACTS_20260816.md) — sole source of truth for submission-facing numbers.
-- [`docs/PREREGISTRATION.md`](docs/PREREGISTRATION.md) — hash-locked preregistration (analysis gateposts).
-- [`docs/CHANGELOG.md`](docs/CHANGELOG.md) — analysis log (methods fixes, bug fixes, failure records).
+- [`docs/manuscript/cover_letter.md`](docs/manuscript/cover_letter.md) — cover letter.
 
 ---
 
@@ -68,7 +66,7 @@ results/   All result tables (CSV), summary statistics, and figures
   candidate15_replication_20260816.csv    15 candidates with replication stats
   grid/                                    stage-2 grid scan outputs
   figures/                                 publication figures
-docs/      Manuscript, FACTS, preregistration, schema, audits
+docs/      Manuscript
 LICENSE    CC BY 4.0
 ```
 
@@ -76,7 +74,7 @@ LICENSE    CC BY 4.0
 
 ## Reproducibility
 
-The full pipeline (input → script → output) is documented in the README of each module and in [`docs/FACTS_20260816.md`](docs/FACTS_20260816.md). Key steps:
+The full pipeline (input → script → output) is documented in the analysis scripts themselves. Key steps:
 
 | Step | Script | Input | Output |
 |---|---|---|---|
@@ -89,6 +87,8 @@ The full pipeline (input → script → output) is documented in the README of e
 | coloc.susie sensitivity (exploratory) | `M34b` | 6 loci + 1000G EUR LD | `results/m34_coloc_susie_20260816.csv` |
 | Figures (5 main + S1) | `M37` / `M38` | result tables | `results/figures/20260816_Fig{1..5}_*.png`, `FigS1_susie.png` |
 | Word manuscript | `M36_build_word_ajhg_20260816.py` | `docs/manuscript/*` | `docs/manuscript/AJHG_submission_Qiushuo_Geng_20260816.docx` |
+
+**Path placeholders.** Scripts use portable placeholders instead of machine-specific paths: `<repo-root>` (repository root), `<scratch>` (staging directory for downloaded source data), and `<conda-root>` (R environment prefix). Replace them with your local paths before re-running; bulk source data (eQTLGen, OpenGWAS, GTEx, FinnGen, 1000 Genomes) must be downloaded separately.
 
 ---
 

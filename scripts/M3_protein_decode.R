@@ -27,7 +27,7 @@ suppressMessages({
   library(jsonlite)
 })
 
-proj <- "/data/qiushuogeng/projects/dual-channel-mr-atlas"
+proj <- "<repo-root>"
 res  <- file.path(proj, "results")
 SUB  <- file.path(proj, "data/decode/sub")
 dir.create(file.path(res, "grid"), recursive = TRUE, showWarnings = FALSE)

@@ -19,7 +19,7 @@
 # 用法：PATH=$R_ENV/bin:$PATH Rscript scripts/M9_smr_build_inputs.R
 # =============================================================================
 suppressMessages(library(data.table))
-proj <- "/data/qiushuogeng/projects/dual-channel-mr-atlas"
+proj <- "<repo-root>"
 gdir <- file.path(proj, "results/grid"); GPROT <- file.path(proj, "results/grid/_coloc_gwas_prot")
 SUB  <- file.path(proj, "data/decode/sub")
 LDREF <- file.path(proj, "data/ldref/1kg.v3/EUR")

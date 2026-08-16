@@ -22,7 +22,7 @@ import gzip, csv, sys, io
 import numpy as np
 import pandas as pd
 
-PROJ = "/data/qiushuogeng/projects/dual-channel-mr-atlas"
+PROJ = "<repo-root>"
 COLOC = f"{PROJ}/results/grid/transcript_coloc.csv"
 SIG   = f"{PROJ}/data/eqtlgen/cis-eQTL-significant.txt.gz"
 CAT   = f"{PROJ}/data/gwas_catalog/gwas-catalog-download-associations-alt-full.tsv"

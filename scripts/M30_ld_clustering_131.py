@@ -19,7 +19,7 @@
 # =============================================================================
 import struct, numpy as np, csv, os
 
-PROJ = "/data/qiushuogeng/projects/dual-channel-mr-atlas"
+PROJ = "<repo-root>"
 LD = os.path.join(PROJ, "data/ldref/1kg.v3/EUR")
 HITS = os.path.join(PROJ, "results/grid/transcript_coloc_hits.csv")
 M28 = os.path.join(PROJ, "results/m28_finngen_replication_new23_20260816.csv")

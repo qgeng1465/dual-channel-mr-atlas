@@ -7,7 +7,7 @@
 # 学术不端/可复现要求：每个文件记录 md5 至 docs/CHANGELOG.md。
 # =============================================================================
 set -uo pipefail
-PROJ=/data/qiushuogeng/projects/dual-channel-mr-atlas
+PROJ=<repo-root>
 CHG=$PROJ/docs/CHANGELOG.md
 mkdir -p "$PROJ/data/eqtlgen" "$PROJ/data/gtex" "$PROJ/data/opengwas" "$PROJ/data/ldref" "$PROJ/tools"
 

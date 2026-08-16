@@ -6,7 +6,7 @@
 # 输出: results/grid/compare_transcript_v1v2.csv + 控制台摘要
 # =============================================================================
 suppressMessages({library(data.table)})
-proj <- "/data/qiushuogeng/projects/dual-channel-mr-atlas"
+proj <- "<repo-root>"
 res  <- file.path(proj, "results")
 
 f1 <- file.path(res, "grid/transcript_mr_qa.csv")

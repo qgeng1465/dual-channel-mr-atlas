@@ -14,7 +14,7 @@
 import csv, os, re
 import synapseclient
 
-PROJ = "/data/qiushuogeng/projects/dual-channel-mr-atlas"
+PROJ = "<repo-root>"
 RES  = os.path.join(PROJ, "results")
 
 # 1. strong coloc 命中 + biotype

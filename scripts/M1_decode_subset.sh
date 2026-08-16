@@ -10,7 +10,7 @@
 # 坐标：hg38 GRCh38，ENSEMBL REST 实查（2026-08-06），TSS=strand 起点/终点。
 # =============================================================================
 set -uo pipefail
-PROJ=/data/qiushuogeng/projects/dual-channel-mr-atlas
+PROJ=<repo-root>
 DECODE=$PROJ/data/decode
 SUB=$DECODE/sub
 DEL_ORIG=0; [ "${1:-}" = "--delete-original" ] && DEL_ORIG=1

@@ -6,7 +6,7 @@
 
 一个可复现的全转录组 **cis-MR × 贝叶斯共定位** 图谱，覆盖 **2 型糖尿病（T2D）**、**冠心病（CAD）** 与 **空腹血糖（FG）** 三个结局。本项目量化了全转录组 cis 孟德尔随机化（cis-MR）作为基因优先级筛选工具的**操作特性（operating characteristics）**，提供一张经校准的共定位图谱作为公共资源，并识别出具备正交证据（MR + coloc + 方向复现）支撑的候选效应基因。
 
-> **关于分析版本。** 分结局 BH-FDR 流水线（"FDR-core"，2026-08-16 定稿）是权威分析，也是论文所采用的分析。所有面向投稿的数字以 [`docs/FACTS_20260816.md`](docs/FACTS_20260816.md) 为准。
+> **关于分析版本。** 分结局 BH-FDR 流水线（"FDR-core"，2026-08-16 定稿）是权威分析，也是论文所采用的分析。所有面向投稿的数字见 [`docs/manuscript/manuscript.md`](docs/manuscript/manuscript.md) 与 `results/` 中的结果表。
 
 ---
 
@@ -51,9 +51,7 @@
 
 - [`docs/manuscript/manuscript.md`](docs/manuscript/manuscript.md) — 完整稿件源文件（标题页、摘要、IMRaD、表格、图、参考文献）。
 - [`docs/manuscript/AJHG_submission_Qiushuo_Geng_20260816.docx`](docs/manuscript/AJHG_submission_Qiushuo_Geng_20260816.docx) — 格式化投稿文档。
-- [`docs/FACTS_20260816.md`](docs/FACTS_20260816.md) — 面向投稿数字的唯一权威来源。
-- [`docs/PREREGISTRATION.md`](docs/PREREGISTRATION.md) — 哈希锁定的预注册（分析门柱）。
-- [`docs/CHANGELOG.md`](docs/CHANGELOG.md) — 分析日志（方法修正、bug 修复、失败记录）。
+- [`docs/manuscript/cover_letter.md`](docs/manuscript/cover_letter.md) — 投稿信。
 
 ---
 
@@ -68,7 +66,7 @@ results/   全部结果表（CSV）、汇总统计与图
   candidate15_replication_20260816.csv    15 个候选及复现统计
   grid/                                    stage-2 网格扫描输出
   figures/                                 论文图
-docs/      论文、FACTS、预注册、schema、审计
+docs/      论文
 LICENSE    CC BY 4.0
 ```
 
@@ -76,7 +74,7 @@ LICENSE    CC BY 4.0
 
 ## 复现指南
 
-完整流水线（输入 → 脚本 → 输出）见各模块文档与 [`docs/FACTS_20260816.md`](docs/FACTS_20260816.md)。关键步骤：
+完整流水线（输入 → 脚本 → 输出）见各分析脚本本身。关键步骤：
 
 | 步骤 | 脚本 | 输入 | 输出 |
 |---|---|---|---|
@@ -89,6 +87,8 @@ LICENSE    CC BY 4.0
 | coloc.susie 敏感性（探索性） | `M34b` | 6 位点 + 1000G EUR LD | `results/m34_coloc_susie_20260816.csv` |
 | 图（5 主图 + S1） | `M37` / `M38` | 各结果表 | `results/figures/20260816_Fig{1..5}_*.png`、`FigS1_susie.png` |
 | Word 稿件 | `M36_build_word_ajhg_20260816.py` | `docs/manuscript/*` | `docs/manuscript/AJHG_submission_Qiushuo_Geng_20260816.docx` |
+
+**路径占位符。** 脚本使用可移植占位符而非机器特定路径：`<repo-root>`（仓库根目录）、`<scratch>`（下载的源数据暂存目录）、`<conda-root>`（R 环境前缀）。重跑前请替换为你本地的实际路径；批量源数据（eQTLGen、OpenGWAS、GTEx、FinnGen、1000 Genomes）需另行下载。
 
 ---
 

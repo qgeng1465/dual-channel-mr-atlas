@@ -26,7 +26,7 @@ for f in font_manager.fontManager.ttflist:
         break
 plt.rcParams["axes.unicode_minus"] = False
 
-RES = "/data/qiushuogeng/projects/dual-channel-mr-atlas/results"
+RES = "<repo-root>/results"
 GRID = f"{RES}/grid"
 OUT = f"{RES}/figures"
 os.makedirs(OUT, exist_ok=True)
@@ -212,7 +212,7 @@ def fig3():
 # ============================ Fig 4：Fuji-plot 基因组分布 ============================
 def fig4():
     bim = []
-    for line in open("/data/qiushuogeng/projects/dual-channel-mr-atlas/data/ldref/1kg.v3/EUR.bim"):
+    for line in open("<repo-root>/data/ldref/1kg.v3/EUR.bim"):
         p = line.split(); bim.append((p[1], int(p[0]), int(p[3])))
     rs2pos = {rs: (ch, pos) for rs, ch, pos in bim}
     # 2 个 strong 位点 top SNP 不在 1000G EUR panel（GRCh37 坐标取自 eQTLGen cis-eQTL 注释）

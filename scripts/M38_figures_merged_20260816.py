@@ -27,7 +27,7 @@ from matplotlib.lines import Line2D
 import matplotlib as mpl
 from scipy.stats import gaussian_kde
 
-RES = "/data/qiushuogeng/projects/dual-channel-mr-atlas/results"
+RES = "<repo-root>/results"
 GRID = f"{RES}/grid"
 OUT = f"{RES}/figures"
 os.makedirs(OUT, exist_ok=True)
@@ -100,7 +100,7 @@ def fig1():
     strong["is_new"] = ~strong[["gene", "outcome"]].apply(
         lambda r: (str(r["gene"]), str(r["outcome"])) in known_keys, axis=1)
     bim = {}
-    for line in open("/data/qiushuogeng/projects/dual-channel-mr-atlas/data/ldref/1kg.v3/EUR.bim"):
+    for line in open("<repo-root>/data/ldref/1kg.v3/EUR.bim"):
         p = line.split(); bim[p[1]] = (int(p[0]), int(p[3]))
     m25 = pd.read_csv(f"{RES}/m25_new_strong_annotation_20260816.csv")
     m25_key = {(row.gene, row.outcome): (row.chr_hg19, row.pos_hg19) for row in m25.itertuples()}
@@ -143,7 +143,11 @@ def fig1():
     fig.savefig(f"{OUT}/20260816_Fig1_design_genome.png", bbox_inches="tight")
     plt.close(fig); print("Fig1 OK")
 
-# ============================ Fig 2: yield funnel ============================
+# ============================ Fig 2: yield funnel (4-panel) ============================
+# (A) 总体 funnel（名义阈值）+ FDR-core 主点 + stage-2 参考点 + 全对基线
+# (B) 分结局 funnel（t2d/cad/fbg 同阈值曲线 + 各结局 FDR-core 点）
+# (C) FDR q 阈值扫描（per-outcome BH-FDR 重算，q 收紧 → yield 单调上升）
+# (D) 分结局 FDR-core yield + Wilson CI + 合并线
 def fig2():
     fun = pd.read_csv(f"{RES}/m36b_funnel_20260816.csv")
     nom = fun[fun["kind"] == "nominal"].sort_values("threshold", ascending=False)
@@ -153,42 +157,137 @@ def fig2():
     cis = [wilson(k, n) for k, n in zip(ks, xs)]
     xlabs = ["<0.5", "<0.05", "<0.01", "<0.005", "<0.001", "<0.0005", "<1e-4", "<1e-5"]
     x = np.arange(len(xs))
+    THS = [0.5, 0.05, 0.01, 0.005, 0.001, 0.0005, 0.0001, 1e-5]
 
     fr = fun[fun["kind"] == "fdr_core"].iloc[0]
     gr = fun[fun["kind"] == "stage2_grid"].iloc[0]
 
-    fig, ax = plt.subplots(figsize=(9.6, 5.6), dpi=300)
-    # 名义阈值曲线 -> 灰色参考
+    # ---- 分结局 funnel 数据（从 coloc_full_* 实时算）----
+    def per_outcome_funnel():
+        out = {}
+        for o in ["t2d", "cad", "fbg"]:
+            d = pd.read_csv(f"{RES}/coloc_full_{o}_20260815.csv")
+            d = d[d["ok"] == True]
+            pts = []
+            for t in THS:
+                sub = d[d["mr_p"] < t]
+                k = int((sub["pp4"] >= 0.8).sum())
+                pts.append((len(sub), k))
+            fc = pd.read_csv(f"{RES}/fdr_core_20260816.csv")
+            fo = fc[fc["outcome"] == o]
+            n_fc, k_fc = len(fo), int(fo["strong"].sum())
+            out[o] = (pts, n_fc, k_fc)
+        return out
+    pof = per_outcome_funnel()
+
+    # ---- FDR q 扫描（per-outcome BH-FDR 重算）----
+    def bh_fdr(p):
+        p = np.asarray(p, float); n = len(p)
+        order = np.argsort(p); padj = p[order]*n/np.arange(1, n+1)
+        padj = np.minimum.accumulate(padj[::-1])[::-1]
+        out = np.full(n, np.nan); out[order] = padj
+        return out
+    QS = [0.05, 0.01, 0.005, 0.001, 0.0005, 0.0001]
+    qsweep = []
+    for q in QS:
+        ns = ks_ = 0
+        for o in ["t2d", "cad", "fbg"]:
+            d = pd.read_csv(f"{RES}/coloc_full_{o}_20260815.csv")
+            d = d[d["ok"] == True].copy()
+            d["padj"] = bh_fdr(d["mr_p"].values)
+            sub = d[d["padj"] < q]
+            ns += len(sub); ks_ += int((sub["pp4"] >= 0.8).sum())
+        qsweep.append((q, ns, ks_, 100*ks_/ns if ns else float("nan")))
+
+    fig, axes = plt.subplots(2, 2, figsize=(13.8, 9.6), dpi=300)
+    fig.subplots_adjust(hspace=0.42, wspace=0.28)
+
+    # ---- (A) 总体 funnel ----
+    ax = axes[0, 0]
     yerr_lo = [max(0, y - 100*c[0]) for c, y in zip(cis, ys)]
     yerr_hi = [max(0, 100*c[1] - y) for c, y in zip(cis, ys)]
     ax.errorbar(x, ys, yerr=[yerr_lo, yerr_hi], fmt="o-", color=C_GREY, ecolor=C_GREY,
                 elinewidth=0.9, capsize=2.4, ms=4.6, zorder=2, alpha=0.85, lw=1.0)
     for xi, y, n in zip(x, ys, xs):
-        ax.text(xi, y + 2.6, f"{y:.1f}%\n(n={n:,})", ha="center", fontsize=6.0, color=C_GREY)
-
+        ax.text(xi, y + 2.2, f"{y:.1f}%\n(n={n:,})", ha="center", fontsize=5.6, color=C_GREY)
+    # 全对基线 0.42%
+    ax.axhline(0.42, color="#bbbbbb", ls=":", lw=1.0)
+    ax.text(0.03, 0.9, "all QC-passed\npairs (0.42%)", fontsize=6.0, color="#777777")
     # 分隔线：阈值区间 | 分析层
     ax.axvline(7.75, color="#bbbbbb", ls=":", lw=0.9)
-
-    # FDR-core: 实心大圆（主点）
+    # FDR-core 主点
     ax.scatter([8.15], [100*fr["yield"]], s=210, marker="o", facecolor=C_RED, edgecolor="#7a0000",
                linewidths=1.6, zorder=5, label="per-outcome BH-FDR core")
-    ax.annotate(f"Per-outcome BH-FDR core\n(primary): {100*fr['yield']:.1f}%  [{int(fr['n']):,} pairs, {int(fr['strong'])} strong]",
-                (8.15, 100*fr["yield"]), textcoords="offset points", xytext=(-4, 22),
-                ha="center", fontsize=7.4, color=C_RED, fontweight="bold")
-    # stage-2: 虚线参考点
+    ax.annotate(f"Per-outcome BH-FDR core (primary)\n{100*fr['yield']:.1f}%  [{int(fr['n']):,} pairs, {int(fr['strong'])} strong]",
+                (8.15, 100*fr["yield"]), textcoords="offset points", xytext=(-4, 20),
+                ha="center", fontsize=6.8, color=C_RED, fontweight="bold")
+    # stage-2 参考点
     ax.scatter([9.35], [100*gr["yield"]], s=90, marker="o", facecolor="white", edgecolor=C_MAIN,
                linewidths=1.6, ls="--", zorder=4)
-    ax.annotate(f"Stage-2 clumped+IVW grid\n(reference): {100*gr['yield']:.1f}%",
-                (9.35, 100*gr["yield"]), textcoords="offset points", xytext=(2, -26),
-                ha="center", fontsize=6.8, color=C_MAIN)
+    ax.annotate(f"Stage-2 clumped+IVW grid (reference)\n{100*gr['yield']:.1f}%",
+                (9.35, 100*gr["yield"]), textcoords="offset points", xytext=(2, -30),
+                ha="center", fontsize=6.2, color=C_MAIN)
+    ax.set_xticks(x); ax.set_xticklabels(xlabs, fontsize=7.0)
+    ax.set_xlabel("Nominal cis-MR significance threshold (mr_p < X)  ·  Analysis layer →", fontsize=8.5)
+    ax.set_ylabel("Colocalization yield (PP.H4≥0.8, %)", fontsize=8.5)
+    ax.set_title("(A) Coloc-yield funnel: nominal thresholds\nas a sensitivity reference to the FDR core", fontsize=9)
+    ax.set_xlim(-0.5, 9.8); ax.set_ylim(0, 34)
 
-    ax.set_xticks(x); ax.set_xticklabels(xlabs, fontsize=7.6)
-    ax.set_xlabel("Nominal cis-MR significance threshold (mr_p < X)  ·  Analysis layer →", fontsize=9)
-    ax.set_ylabel("Colocalization yield (PP.H4≥0.8, %)", fontsize=9)
-    ax.set_title("Coloc yield calibrates with MR evidence: the preregistered BH-FDR core\nis the primary estimate; nominal thresholds are a sensitivity reference",
-                 fontsize=10)
-    ax.set_xlim(-0.5, 9.8); ax.set_ylim(0, 33)
-    fig.tight_layout(); fig.savefig(f"{OUT}/20260816_Fig2_yield_funnel.png", bbox_inches="tight")
+    # ---- (B) 分结局 funnel ----
+    ax = axes[0, 1]
+    for o, col in zip(["t2d", "cad", "fbg"], [T2D_C, CAD_C, FBG_C]):
+        pts, n_fc, k_fc = pof[o]
+        ys_o = [100*k/n if n else float("nan") for n, k in pts]
+        ax.plot(x, ys_o, "o-", color=col, lw=1.3, ms=3.8, alpha=0.9,
+                label=f"{OUTL[o]} (n at FDR core = {n_fc:,})")
+        # 分结局 FDR-core 点
+        ax.scatter([8.15], [100*k_fc/n_fc], s=120, marker="o", facecolor=col,
+                   edgecolor="white", linewidths=1.0, zorder=5)
+    ax.axhline(0.42, color="#bbbbbb", ls=":", lw=0.9)
+    ax.text(0.03, 0.9, "all-QC baseline\n(0.42%)", fontsize=5.6, color="#777777")
+    ax.set_xticks(x); ax.set_xticklabels(xlabs, fontsize=6.8, rotation=30, ha="right")
+    ax.set_xlabel("Nominal cis-MR significance threshold", fontsize=8.5)
+    ax.set_ylabel("Colocalization yield (PP.H4≥0.8, %)", fontsize=8.5)
+    ax.set_title("(B) Outcome-stratified funnels: the calibration\nholds within T2D, CAD, and FG", fontsize=9)
+    ax.set_xlim(-0.5, 9.8); ax.set_ylim(0, 45)
+    ax.legend(fontsize=6.4, loc="upper left", frameon=False)
+
+    # ---- (C) FDR q 扫描 ----
+    ax = axes[1, 0]
+    qx = np.arange(len(QS))
+    ys_q = [t[3] for t in qsweep]
+    ns_q = [t[1] for t in qsweep]
+    ax.plot(qx, ys_q, "o-", color=C_RED, lw=1.6, ms=5.5, zorder=3)
+    for xi, y, n in zip(qx, ys_q, ns_q):
+        ax.text(xi, y + 1.6, f"{y:.1f}%\n(n={n:,})", ha="center", fontsize=6.0, color=C_RED)
+    ax.axhline(100*gr["yield"], color=C_MAIN, ls="--", lw=1.0)
+    ax.text(len(QS)-0.15, 100*gr["yield"] + 1.0, f"stage-2 grid\n{100*gr['yield']:.1f}%",
+            fontsize=5.8, color=C_MAIN, ha="right")
+    ax.set_xticks(qx); ax.set_xticklabels([f"q < {q}" for q in QS], fontsize=7.0, rotation=30, ha="right")
+    ax.set_xlabel("Per-outcome BH-FDR threshold (recomputed)", fontsize=8.5)
+    ax.set_ylabel("Colocalization yield (PP.H4≥0.8, %)", fontsize=8.5)
+    ax.set_title("(C) The preregistered FDR control itself\ncalibrates: yield rises as q tightens", fontsize=9)
+    ax.set_xlim(-0.4, len(QS)-0.6); ax.set_ylim(0, 36)
+
+    # ---- (D) 分结局 FDR-core yield + CI ----
+    ax = axes[1, 1]
+    cats = ["T2D", "CAD", "FG", "Combined"]
+    cols = [T2D_C, CAD_C, FBG_C, C_RED]
+    kk = [65, 54, 2, 121]; nn = [394, 576, 12, 982]
+    for i, (k, n, col) in enumerate(zip(kk, nn, cols)):
+        lo, hi = wilson(k, n); yc = 100*k/n
+        ax.bar(i, yc, width=0.55, color=col, alpha=0.92)
+        ax.errorbar(i, yc, yerr=[[max(0, yc-100*lo)], [max(0, 100*hi-yc)]], fmt="none", ecolor="black", capsize=3)
+        ax.text(i, yc + 1.5, f"{yc:.1f}%", ha="center", fontsize=7.2, fontweight="bold")
+        ax.text(i, 0.7, f"{k}/{n}", ha="center", fontsize=6.4, color="white", fontweight="bold")
+    ax.set_xticks(range(4)); ax.set_xticklabels(cats, fontsize=8.2)
+    ax.set_ylabel("Colocalization yield in FDR core (PP.H4≥0.8, %)", fontsize=8.5)
+    ax.set_title("(D) Per-outcome FDR-core yield with\nWilson 95% confidence intervals", fontsize=9)
+    ax.set_ylim(0, 52)
+
+    fig.suptitle("Coloc yield calibrates with MR evidence: nominal funnel, outcome-stratified funnels,\nFDR-threshold calibration, and per-outcome FDR-core yields",
+                 fontsize=11, y=0.985)
+    fig.savefig(f"{OUT}/20260816_Fig2_yield_funnel.png", bbox_inches="tight")
     plt.close(fig); print("Fig2 OK")
 
 # ============================ Fig 3: calibration disclosures ============================

@@ -21,7 +21,7 @@
 # =============================================================================
 import json, subprocess, csv, os, sys
 
-PROJ = "/data/qiushuogeng/projects/dual-channel-mr-atlas"
+PROJ = "<repo-root>"
 PROXY = "http://127.0.0.1:7890"
 API = "https://biit.cs.ut.ee/gprofiler/api/gost/profile/"
 SOURCES = ["GO:BP", "GO:MF", "KEGG", "REAC"]

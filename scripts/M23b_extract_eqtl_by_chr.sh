@@ -4,7 +4,7 @@
 # =============================================================================
 # 背景（2026-08-15）：M23 v1 按基因块 awk 抽取，3 进程并发扫同一 4.3G gz，
 #   每块 12-14 分钟（14 块全扫）→ 太慢。改为**一次全扫 + 按染色体分文件明文落盘**
-#   （/data/qiushuogeng/tmp/eqtlgen_stable/bychr/chr{1..22}.tsv），
+#   （<scratch>/eqtlgen_stable/bychr/chr{1..22}.tsv），
 #   之后 M23 v2 每结局按染色体循环 fread 明文块（无重复解压、内存可控）。
 # 列序（eQTLGen full，2026-08-15 逐列核实）：
 #   1 Pvalue 2 SNP 3 SNPChr 4 SNPPos 5 Zscore 6 AssessedAllele 7 OtherAllele
@@ -13,8 +13,8 @@
 # 用法：bash scripts/M23b_extract_eqtl_by_chr.sh   （走仲裁后台）
 # =============================================================================
 set -e
-FULL=/data/qiushuogeng/tmp/eqtlgen_stable/cis-eQTLs_full_20180905.txt.gz
-OUT=/data/qiushuogeng/tmp/eqtlgen_stable/bychr
+FULL=<scratch>/eqtlgen_stable/cis-eQTLs_full_20180905.txt.gz
+OUT=<scratch>/eqtlgen_stable/bychr
 mkdir -p "$OUT"
 cd "$OUT"
 [ -f DONE ] && { echo "already done"; exit 0; }

@@ -8,7 +8,7 @@
 # 产物：data/ukbpp/{GENE}_*.tar（解压到 data/ukbpp/{GENE}/）
 # =============================================================================
 set -uo pipefail
-PROJ=/data/qiushuogeng/projects/dual-channel-mr-atlas
+PROJ=<repo-root>
 OUT=$PROJ/data/ukbpp
 mkdir -p "$OUT"
 export HTTPS_PROXY="http://127.0.0.1:7890" HTTP_PROXY="http://127.0.0.1:7890"

@@ -26,14 +26,14 @@ for f in font_manager.fontManager.ttflist:
         break
 plt.rcParams["axes.unicode_minus"] = False
 
-PROJ  = "/data/qiushuogeng/projects/dual-channel-mr-atlas"
+PROJ  = "<repo-root>"
 RES   = f"{PROJ}/results"
 EUR   = f"{PROJ}/data/ldref/1kg.v3/EUR"
-BYCHR = "/data/qiushuogeng/tmp/eqtlgen_stable/bychr"
-SIG   = "/data/qiushuogeng/tmp/eqtlgen_stable/cis-EQTL-significant.txt.gz"
+BYCHR = "<scratch>/eqtlgen_stable/bychr"
+SIG   = "<scratch>/eqtlgen_stable/cis-EQTL-significant.txt.gz"
 GWASD = f"{PROJ}/data/opengwas/full"
 OUT   = f"{RES}/figures"
-TMP   = "/data/qiushuogeng/tmp/mirror"
+TMP   = "<scratch>/mirror"
 os.makedirs(OUT, exist_ok=True); os.makedirs(TMP, exist_ok=True)
 PLINK = f"{PROJ}/tools/plink"
 

@@ -8,7 +8,7 @@
 # 与 M10_run_smr.sh 完全一致（SMR 参数、awk 追加 outcome 列），仅输入换 _full。
 # =============================================================================
 set -euo pipefail
-PROJ=/data/qiushuogeng/projects/dual-channel-mr-atlas
+PROJ=<repo-root>
 SMR=$PROJ/tools/smr
 LDREF=$PROJ/data/ldref/1kg.v3/EUR
 MA=$PROJ/data/smr

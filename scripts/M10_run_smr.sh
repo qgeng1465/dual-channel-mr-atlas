@@ -5,7 +5,7 @@
 # 产物: results/grid/transcript_smr_heidi.csv（含 outcome 列）
 # =============================================================================
 set -euo pipefail
-PROJ=/data/qiushuogeng/projects/dual-channel-mr-atlas
+PROJ=<repo-root>
 SMR=$PROJ/tools/smr
 LDREF=$PROJ/data/ldref/1kg.v3/EUR
 MA=$PROJ/data/smr

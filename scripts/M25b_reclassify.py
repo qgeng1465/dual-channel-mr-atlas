@@ -13,7 +13,7 @@
 import gzip, bisect, csv
 import pandas as pd
 
-PROJ = "/data/qiushuogeng/projects/dual-channel-mr-atlas"
+PROJ = "<repo-root>"
 RES  = f"{PROJ}/results"
 CAT  = f"{PROJ}/data/gwas_catalog/gwas-catalog-download-associations-alt-full.tsv"
 OUT  = f"{RES}/m25b_reclassify_20260816.csv"

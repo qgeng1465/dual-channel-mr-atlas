@@ -18,7 +18,7 @@ import os, sys
 import numpy as np
 import pandas as pd
 
-BASE = "/data/qiushuogeng/projects/dual-channel-mr-atlas"
+BASE = "<repo-root>"
 RES = f"{BASE}/results"
 
 OUTCOMES = ["t2d", "cad", "fbg"]

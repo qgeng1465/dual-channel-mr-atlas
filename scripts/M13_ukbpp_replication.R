@@ -21,7 +21,7 @@ suppressMessages({
   suppressPackageStartupMessages(library(TwoSampleMR))
   suppressPackageStartupMessages(library(ieugwasr))
 })
-proj <- "/data/qiushuogeng/projects/dual-channel-mr-atlas"
+proj <- "<repo-root>"
 res  <- file.path(proj, "results")
 UKB  <- file.path(proj, "data/ukbpp")
 SUB  <- file.path(proj, "data/decode/sub")

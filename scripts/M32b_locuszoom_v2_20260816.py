@@ -26,14 +26,14 @@ for f in font_manager.fontManager.ttflist:
         break
 plt.rcParams["axes.unicode_minus"] = False
 
-PROJ  = "/data/qiushuogeng/projects/dual-channel-mr-atlas"
+PROJ  = "<repo-root>"
 RES   = f"{PROJ}/results"
 EUR   = f"{PROJ}/data/ldref/1kg.v3/EUR"
-BYCHR = "/data/qiushuogeng/tmp/eqtlgen_stable/bychr"
-SIG   = "/data/qiushuogeng/tmp/eqtlgen_stable/cis-EQTL-significant.txt.gz"
+BYCHR = "<scratch>/eqtlgen_stable/bychr"
+SIG   = "<scratch>/eqtlgen_stable/cis-EQTL-significant.txt.gz"
 GWASD = f"{PROJ}/data/opengwas/full"
 OUT   = f"{RES}/figures"
-TMP   = "/data/qiushuogeng/tmp/mirror"
+TMP   = "<scratch>/mirror"
 os.makedirs(OUT, exist_ok=True); os.makedirs(TMP, exist_ok=True)
 PLINK = f"{PROJ}/tools/plink"
 
@@ -177,10 +177,10 @@ for i, loc in enumerate(LOCI):
                         edgecolor="black", linewidth=0.5, zorder=4)
             axg.annotate(loc["anchor"], (ap, -np.log10(ap_p)), textcoords="offset points",
                          xytext=(3, 3), fontsize=5.6, color="#e00000")
-    axg.set_ylabel(f"GWAS $-\\log_{{10}}(p)$\n({CONF[loc['out']]})", fontsize=6.5)
+    axg.set_ylabel(f"GWAS $-\\log_{{10}}(p)$\n({CONF[loc['out']]})", fontsize=9)
     axg.set_title(f"{loc['sym']}  ({loc['ensg']})", fontsize=8, loc="left", fontweight="bold", pad=1)
     axg.set_ylim(0, max(gy) * 1.18 if gy else 1)
-    axg.tick_params(labelsize=6)
+    axg.tick_params(labelsize=8)
     axg.set_xticklabels([])
     axg.spines[["top", "right"]].set_visible(False)
 
@@ -202,8 +202,8 @@ for i, loc in enumerate(LOCI):
     if max(ey) > cap:
         axe.text(0.99, 0.96, f"top eQTL Z={maxZ:.1f}\n($-\\log_{{10}}(p)$>50 capped)",
                  transform=axe.transAxes, fontsize=5.2, ha="right", va="top", color="#444444")
-    axe.set_ylabel("eQTL $-\\log_{10}(p)$", fontsize=6.5)
-    axe.tick_params(labelsize=6)
+    axe.set_ylabel("eQTL $-\\log_{10}(p)$", fontsize=9)
+    axe.tick_params(labelsize=8)
     axe.spines[["top", "right"]].set_visible(False)
 
     # ---- 面板字母（AJHG 规范：大写粗体左上角）----
@@ -232,9 +232,9 @@ for i, loc in enumerate(LOCI):
              color="#c00000", fontweight="bold")
 
     # x 轴刻度（每行下板）
-    axe.set_xlabel(f"chr{loc['chr']} (hg19, Mb)", fontsize=6.5)
+    axe.set_xlabel(f"chr{loc['chr']} (hg19, Mb)", fontsize=8)
     axe.set_xticks(np.linspace(loc["pos"]-WIND, loc["pos"]+WIND, 5))
-    axe.set_xticklabels([f"{v/1e6:.2f}" for v in np.linspace(loc["pos"]-WIND, loc["pos"]+WIND, 5)], fontsize=6)
+    axe.set_xticklabels([f"{v/1e6:.2f}" for v in np.linspace(loc["pos"]-WIND, loc["pos"]+WIND, 5)], fontsize=7.5)
     for axx in (axg, axe):
         axx.axvline(loc["pos"], color="#cccccc", lw=0.6, ls=":", zorder=1)
 

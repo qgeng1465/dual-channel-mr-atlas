@@ -9,7 +9,7 @@
 # =============================================================================
 import csv, os, sys
 
-RES = "/data/qiushuogeng/projects/dual-channel-mr-atlas/results"
+RES = "<repo-root>/results"
 
 def f(x, default=float('nan')):
     try:

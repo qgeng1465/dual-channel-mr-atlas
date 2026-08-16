@@ -27,7 +27,7 @@ suppressMessages({
   suppressPackageStartupMessages(library(coloc))
   suppressPackageStartupMessages(library(susieR))
 })
-proj <- "/data/qiushuogeng/projects/dual-channel-mr-atlas"
+proj <- "<repo-root>"
 res  <- file.path(proj, "results")
 gdir <- file.path(res, "grid")
 SUB  <- file.path(proj, "data/decode/sub")

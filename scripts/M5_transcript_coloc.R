@@ -30,7 +30,7 @@ suppressMessages({
   suppressPackageStartupMessages(library(coloc))
   library(jsonlite); library(httr)
 })
-proj <- "/data/qiushuogeng/projects/dual-channel-mr-atlas"
+proj <- "<repo-root>"
 res  <- file.path(proj, "results")
 gdir <- file.path(res, "grid")
 dir.create(file.path(gdir, "_coloc_gwas"), recursive = TRUE, showWarnings = FALSE)

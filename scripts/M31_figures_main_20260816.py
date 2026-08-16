@@ -24,7 +24,7 @@ for f in font_manager.fontManager.ttflist:
         break
 plt.rcParams["axes.unicode_minus"] = False
 
-RES = "/data/qiushuogeng/projects/dual-channel-mr-atlas/results"
+RES = "<repo-root>/results"
 GRID = f"{RES}/grid"
 OUT = f"{RES}/figures"
 os.makedirs(OUT, exist_ok=True)
@@ -81,7 +81,7 @@ print("Fig 3 OK:", f"sig={len(layers['sig'])}, grey={len(layers['grey'])}, null=
 # 129 nominal-sig strong：known 106（top_snp）+ 23 new（eqtlgen_lead_snp）
 # 位置从 1kg EUR bim (hg19) 反查；未匹配跳过并披露
 bim = []
-for line in open("/data/qiushuogeng/projects/dual-channel-mr-atlas/data/ldref/1kg.v3/EUR.bim"):
+for line in open("<repo-root>/data/ldref/1kg.v3/EUR.bim"):
     p = line.split()
     bim.append((p[1], int(p[0]), int(p[3])))  # rsid, chr, pos
 rs2pos = {rs: (ch, pos) for rs, ch, pos in bim}

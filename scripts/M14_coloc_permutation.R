@@ -21,7 +21,7 @@ suppressMessages({
   suppressPackageStartupMessages(library(coloc))
 })
 B <- if (length(commandArgs(trailingOnly = TRUE)) > 0) as.integer(commandArgs(trailingOnly = TRUE)[1]) else 100
-proj <- "/data/qiushuogeng/projects/dual-channel-mr-atlas"
+proj <- "<repo-root>"
 res  <- file.path(proj, "results")
 gdir <- file.path(res, "grid")
 FULL <- file.path(proj, "data/eqtlgen/cis-eQTLs_full_20180905.txt.gz")
