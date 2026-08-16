@@ -1,6 +1,0 @@
-试点对：灰区 3000  阴性 3000 
-awk: cmd. line:1: (FILENAME=- FNR=148008596) fatal: print to "standard output" failed: No space left on device
-Error in fread(cmd = cmd, sep = "\t", header = TRUE, nThread = 4, select = c("SNP",  : 
-  External command failed with exit code 2. This can happen when the disk is full in the temporary directory ('/tmp/RtmpAxGJFA'). See ?fread for the tmpdir argument.
-Calls: fread -> stopf -> raise_condition -> signal
-Execution halted

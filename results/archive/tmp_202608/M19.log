@@ -1,7 +1,0 @@
-[13:03:25] 下载 t2d_full.gz <- https://ftp.ebi.ac.uk/pub/databases/gwas/summary_statistics/GCST006001-GCST007000/GCST006867/harmonised/30054458-GCST006867-EFO_0001360.h.tsv.gz
-[13:04:10] t2d_full.gz OK: 232792798 bytes
-[13:04:10] 下载 cad_full.gz <- https://ftp.ebi.ac.uk/pub/databases/gwas/summary_statistics/GCST005001-GCST006000/GCST005194/harmonised/29212778-GCST005194-EFO_0000378.h.tsv.gz
-[13:05:54] cad_full.gz OK: 407861993 bytes
-[13:05:54] 下载 fbg_full.gz <- https://ftp.ebi.ac.uk/pub/databases/gwas/summary_statistics/GCST005001-GCST006000/GCST005186/MAGIC_Manning_et_al_FastingGlucose_MainEffect.txt.gz
-[13:06:38] fbg_full.gz OK: 44840869 bytes
-[13:06:39] 全部下载完成

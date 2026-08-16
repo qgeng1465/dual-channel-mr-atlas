@@ -1,9 +1,0 @@
-试点对：灰区 3000  阴性 3000 
-[ 14:54:43 ]  awk 抽取 eQTL 子集（落盘 /data，~50M 行，需 20-30 分钟）... 
-
-gzip: stdin: unexpected end of file
-[ 14:54:43 ]  落盘完成  /data/qiushuogeng/projects/dual-channel-mr-atlas/tmp/eqtl_pilot_subset.tsv.gz  用时  0  分钟 | 大小  0  MB 
-Error in fread(out_gz, sep = "\t", header = TRUE, nThread = 4) : 
-  To read gz files directly, fread() requires 'R.utils' package which cannot be found. Please install 'R.utils' using 'install.packages('R.utils')'.
-Calls: fread -> stopf -> raise_condition -> signal
-Execution halted

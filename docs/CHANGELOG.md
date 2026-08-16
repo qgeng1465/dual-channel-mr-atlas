@@ -39,11 +39,11 @@
 
 ### M19 全量结局 GWAS 下载完成 + 根盘满危机处理
 - `data/opengwas/full/{t2d,cad,fbg}_full.gz` 三个全量 GWAS 下载完成（DONE 标记；T2D 修复损坏文件重下、CAD/FBG 新下）。
-- **根文件系统 / 100% 满（8.9M 可用）**：M20 冒烟曾因 `Fatal error: cannot create 'R_TempDir'` 崩；清理被杀 M20 的 /tmp/RtmpB5ECJT 3.8G 残留 + stale plink 文件 → 92%（4.1G 可用）。R 临时目录固定 `R_TMPDIR=/data/qiushuogeng/tmp/rtmp`（/data 有空间）。
+- **根文件系统 / 100% 满（8.9M 可用）**：M20 冒烟曾因 `Fatal error: cannot create 'R_TempDir'` 崩；清理被杀 M20 的 /tmp/RtmpB5ECJT 3.8G 残留 + stale plink 文件 → 92%（4.1G 可用）。R 临时目录固定 `R_TMPDIR=<scratch>/rtmp`（/data 有空间）。
 
 ### M20 调试（9 轮冒烟修 6 个技术坑 + 3 轮全量崩溃根因）
 - ① `standard_error` 列代替 hm_ci（harmonised CI 全空，se 等位取向不变）；② data.table 列名 `p` 遮蔽循环变量 `p` → 改名 `pr`；③ coloc 输出 `PP.H4.abf`（不是 `PP.H4`，summary 是 named vector）；④ harmonize 缺 NA 守卫（`eaf_g` NA → p_flip NA 崩溃）；⑤ FBG 等位基因小写（a/g）vs eQTLGen 大写 → `toupper()`，QC 通过率 55.6%→88.9%；⑥ eQTLGen 全量实为 **~153M 行**（16,923 基因 × ~9,053 cis 变异，非评估 agent 声称的 10.5M 行；**10.5M 是 cis-EQTL-significant 子集**）。
-- **M20 全量 3 轮崩溃根因（本轮全部定位）**：⑦ 根盘 / 50G 满 → `fread(cmd=)` 管道缓冲写 `/tmp/Rtmp*` No space → 必须 `TMPDIR=/data/qiushuogeng/tmp/rtmp`（**R 认 TMPDIR 不认 R_TMPDIR**）；⑧ `system2("bash", c("-c",cmd))` 内联 awk 的 `$1/$8` 被 bash 当位置参数展开成空 → awk 语法错 + `gzip: stdin: unexpected end of file` 落盘 0MB → awk 程序写文件用 `-f` 调；⑨ eQTLGen full 真实列序（逐列核实：1 Pvalue 2 SNP 3 SNPChr 4 SNPPos 5 **Zscore** 6 AssessedAllele 7 OtherAllele 8 Gene 9 GeneSymbol 10 GeneChr 11 GenePos 12 NrCohorts 13 NrSamples 14 FDR），awk 按位置抽须按此、**fread select 按列名**（Zscore 不在第 7 列）；⑩ R 的 `system2` 在本机某些管道场景行为异常 → **最终方案：fread(cmd="zcat | awk 单引号内联") 管道直读 + TMPDIR=/data**（复刻第一次能跑到 148M 行的路径，规避 system2）。
+- **M20 全量 3 轮崩溃根因（本轮全部定位）**：⑦ 根盘 / 50G 满 → `fread(cmd=)` 管道缓冲写 `/tmp/Rtmp*` No space → 必须 `TMPDIR=<scratch>/rtmp`（**R 认 TMPDIR 不认 R_TMPDIR**）；⑧ `system2("bash", c("-c",cmd))` 内联 awk 的 `$1/$8` 被 bash 当位置参数展开成空 → awk 语法错 + `gzip: stdin: unexpected end of file` 落盘 0MB → awk 程序写文件用 `-f` 调；⑨ eQTLGen full 真实列序（逐列核实：1 Pvalue 2 SNP 3 SNPChr 4 SNPPos 5 **Zscore** 6 AssessedAllele 7 OtherAllele 8 Gene 9 GeneSymbol 10 GeneChr 11 GenePos 12 NrCohorts 13 NrSamples 14 FDR），awk 按位置抽须按此、**fread select 按列名**（Zscore 不在第 7 列）；⑩ R 的 `system2` 在本机某些管道场景行为异常 → **最终方案：fread(cmd="zcat | awk 单引号内联") 管道直读 + TMPDIR=/data**（复刻第一次能跑到 148M 行的路径，规避 system2）。
 - 第五次全量运行中：灰区 3000 + 阴性 3000（awk 阶段 15:11 起，~20-30 分钟 → 6000 coloc → 摘要）。
 
 ### M22 零成本检验完成（评审 §8/§10#3，`results/m22_efqt_power_20260815.csv`）
@@ -65,7 +65,7 @@
 
 ### 文件系统间歇异常 + eQTLGen 稳定副本策略（2026-08-15 15:37 起）
 - **症状**：`data/eqtlgen/` 下 `cis-eQTLs_full_20180905.txt.gz`（4.3G）与 `cis-EQTL-significant.txt.gz`（322M）**间歇性 openat() 返回 ENOENT**（strace 证实内核层），目录项可见（ls）但 stat/open/mv 失败，时好时坏（python 偶成）。SNP_AF.txt.gz 及 /data 其他文件正常，新写入文件正常 → **inode 特定、非整体盘问题**；关闭沙箱后仍失败。
-- **应对**：① full + SNP_AF 本地复制到 `/data/qiushuogeng/tmp/eqtlgen_stable/`（新 inode，gzip -t 校验通过）；② significant 从官方源重下（molgenis26.gcc.rug.nl/downloads/eqtlgen/cis-eqtl/2019-12-11-cis-eQTLsFDR0.05-...txt.gz = 322775879B 与本地同版本，curl -C - 续传，gzip 校验通过）；③ **M23 脚本改读 stable 副本**。
+- **应对**：① full + SNP_AF 本地复制到 `<scratch>/eqtlgen_stable/`（新 inode，gzip -t 校验通过）；② significant 从官方源重下（molgenis26.gcc.rug.nl/downloads/eqtlgen/cis-eqtl/2019-12-11-cis-eQTLsFDR0.05-...txt.gz = 322775879B 与本地同版本，curl -C - 续传，gzip 校验通过）；③ **M23 脚本改读 stable 副本**。
 - 原文件留在原位（不删），若日后恢复可对照。
 
 ### M23 全量 coloc 扫描启动（2026-08-15 15:48）
@@ -125,7 +125,7 @@
 ## 2026-08-07 — 本地 mihomo 代理加速下载（实测 1kg ×50 提速，deCODE ×3.2）
 
 - **动因**：直连下载过慢（deCODE ~7.5 KB/s、1kg ~11 KB/s），用户提供代理订阅并授权运行。
-- **部署**：mihomo v1.19.29 装在 `/data/qiushuogeng/tools/mihomo/`（**不占系统盘**）；`config.yaml` 为最小规则集（MATCH,Proxy），**权限 600**，含订阅凭据，**禁止提交 git / 写入 README**。
+- **部署**：mihomo v1.19.29 装在 `<tools>/mihomo/`（**不占系统盘**）；`config.yaml` 为最小规则集（MATCH,Proxy），**权限 600**，含订阅凭据，**禁止提交 git / 写入 README**。
 - **实测提速（2026-08-07 14:00 本地 127.0.0.1:7890）**：deCODE 直连 7.5 → 经 HK 节点 23.7 KB/s（×3.2）；1kg fileserve 直连 10.9 → 595.9 KB/s（×55）。节点对比：deCODE 最优稳定为 HK Premium x2（28.9 KB/s），JP 波动大（28→11 KB/s）不作默认。
 - **脚本改造**：`decode_slow_dl.sh` 支持 `PROXY=http://127.0.0.1:7890` 环境变量（默认空=直连，向后兼容）；1kg 用 `curl -C - -x` 续传重启（fileserve 支持 Range，从 37.3MB 断点续传）。
 - **监控**：session cron ac0a4990（durable）加入 mihomo 存活检查，代理死则重启（读现有 600 配置，不打印凭据）。
@@ -248,7 +248,7 @@
 
 ## 2026-08-05 — v0.3 落盘 + 导师收尾项修正
 
-- README v0.3 落盘至 `/data/qiushuogeng/projects/dual-channel-mr-atlas/README.md`（博士生+导师 agent 合著，导师 approved=True）。
+- README v0.3 落盘至 `<repo-root>/README.md`（博士生+导师 agent 合著，导师 approved=True）。
 - 落实导师放行后 5 条收尾：
   1. §9 Nusinow 页区间 `180:585-600` → `180(2):387-402.e16`（PMID 31978347 正确，页区间错已修），回填 docs/citation_checklist.md。
   2. §4.3 删除残留编辑句「同时修正 ieugrasr 为 ieugwasr」。

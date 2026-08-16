@@ -76,7 +76,7 @@
 
 运行（本任务已在资源仲裁下成功跑完一遍）：
 ```bash
-PATH=/data/gengqiushuo/home/miniconda3/envs/r-mr/bin:$PATH \
+PATH=<conda-root>/envs/r-mr/bin:$PATH \
   Rscript scripts/M10b_build_heidi_full_inputs.R
 # 或经本机资源仲裁工具排队运行（命令略）
 ```

@@ -173,7 +173,7 @@
 - **§2 修正（M20 后）**：方案 A 原"MR 漏掉约 3/4 共定位位点（低召回）"表述已被 M20 推翻——MR 显著集外不存在 strong coloc，cis-MR 的问题是精度（假阳性率高）而非召回。论文故事线相应改为：**精度 12.9% + MR 显著集外零共定位的完整覆盖 + 全转录组 coloc 图谱资源**。
 
 ### 8.3 全量验证（进行中）
-- **M23 全量 coloc 扫描**（2026-08-15 15:48 启动）：31,373 对 MR 有效对（t2d 10190 / cad 14675 / fbg 6508），3 进程并行，读 `/data/qiushuogeng/tmp/eqtlgen_stable/` 稳定副本（原 eqtlgen inode 遭间歇性 ENOENT，见 CHANGELOG）。预期 MR sig 集内 strong ≈ 106（与已知命中交叉验证），sig 外 ≈ 0。
+- **M23 全量 coloc 扫描**（2026-08-15 15:48 启动）：31,373 对 MR 有效对（t2d 10190 / cad 14675 / fbg 6508），3 进程并行，读 `<scratch>/eqtlgen_stable/` 稳定副本（原 eqtlgen inode 遭间歇性 ENOENT，见 CHANGELOG）。预期 MR sig 集内 strong ≈ 106（与已知命中交叉验证），sig 外 ≈ 0。
 - 汇总：`scripts/M24_summarize.py` → `results/coloc_full_summary_20260815.csv`。
 
 ### 8.4 M23/M20 genome build 错位修复 + 修复版结果（2026-08-15 18:40 起，决定性）
