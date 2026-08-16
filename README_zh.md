@@ -101,9 +101,9 @@ LICENSE    CC BY 4.0
 
 **输出数据：** 全部分析输出（结果表、汇总统计、图、脚本）均在本仓库中提供。
 
-**存档副本：** 本仓库的版本化存档副本将存放于 Zenodo。
+**存档副本：** 本仓库的版本化存档副本已存放于 Zenodo。
 
-> DOI 待 Zenodo 归档后填入。
+> DOI：[10.5281/zenodo.21967917](https://doi.org/10.5281/zenodo.21967917)
 
 ---
 
@@ -113,4 +113,4 @@ LICENSE    CC BY 4.0
 
 ## 引用
 
-Qiushuo Geng. *Transcriptome-wide cis-MR and colocalization atlas for type 2 diabetes, coronary artery disease, and fasting glucose: operating characteristics and candidate effector genes.* Zenodo: DOI 待分配。
+Qiushuo Geng. *Transcriptome-wide cis-MR and colocalization atlas for type 2 diabetes, coronary artery disease, and fasting glucose: operating characteristics and candidate effector genes.* Zenodo: [10.5281/zenodo.21967917](https://doi.org/10.5281/zenodo.21967917)。

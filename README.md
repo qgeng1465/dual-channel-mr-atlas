@@ -103,7 +103,7 @@ The full pipeline (input → script → output) is documented in the analysis sc
 
 **Archival copy:** a versioned archival copy of this repository is deposited on Zenodo.
 
-> DOI to be inserted after Zenodo archival.
+> DOI: [10.5281/zenodo.21967917](https://doi.org/10.5281/zenodo.21967917)
 
 ---
 
@@ -113,4 +113,4 @@ This repository is released under the [Creative Commons Attribution 4.0 Internat
 
 ## Citation
 
-Qiushuo Geng. *Transcriptome-wide cis-MR and colocalization atlas for type 2 diabetes, coronary artery disease, and fasting glucose: operating characteristics and candidate effector genes.* Zenodo: DOI-to-be-assigned.
+Qiushuo Geng. *Transcriptome-wide cis-MR and colocalization atlas for type 2 diabetes, coronary artery disease, and fasting glucose: operating characteristics and candidate effector genes.* Zenodo: [10.5281/zenodo.21967917](https://doi.org/10.5281/zenodo.21967917).
