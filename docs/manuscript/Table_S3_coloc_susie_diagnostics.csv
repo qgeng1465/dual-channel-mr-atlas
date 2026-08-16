@@ -1,0 +1,7 @@
+Gene,Outcome,MR p,coloc.abf PP.H4,coloc.susie PP.H4,n_SNPs,SuSiE eQTL credible sets,SuSiE GWAS credible sets,"Convergence (external LD, max_iter=200)"
+RBM6,T2D,1.022e-05,0.9448,1.0000,927,2,2,not converged
+CNNM2,CAD,9.85e-15,0.9366,0.9996,2557,10,6,not converged
+PLAUR,CAD,2.005e-06,0.9957,0.9990,3236,10,9,not converged
+CD101,T2D,1.164e-04,0.9488,1.0000,1653,10,8,not converged
+RIC8A,CAD,4.875e-05,0.8895,1.0000,2044,3,3,not converged
+LAMC1,CAD,4.735e-03,0.9139,0.0000,3063,8,3,not converged

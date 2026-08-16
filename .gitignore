@@ -1,0 +1,14 @@
+# 大数据/可再生产物不入库
+data/
+*.part
+*.tgz
+*.rds
+nohup.out
+/tmp/
+# 工具二进制/压缩包不入库（plink 等）
+tools/
+*.zip
+# LD 冒烟产物
+results/ldref_smoke*
+__pycache__/
+*.pyc

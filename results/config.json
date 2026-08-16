@@ -1,0 +1,103 @@
+{
+ "project": "dual-channel-mr-atlas",
+ "version": "0.1.0",
+ "prereg_time": "2026-08-06 13:35:32 CST",
+ "note_config_restored": "config.json 于 2026-08-16 重建（原文件缺失）。结局 ID 按 PREREGISTRATION.md §6.1 实际执行记录更新为 GCST 系列；其余设计锁定参数与 v1 预注册一致。",
+ "exposures": {
+  "transcript": {
+   "name": "eQTLGen whole-blood cis-eQTL",
+   "n": 31684,
+   "note": "暴露通道A: 全血细胞转录本"
+  },
+  "protein": {
+   "name": "deCODE plasma cis-pQTL",
+   "n": 35559,
+   "note": "暴露通道B: 循环蛋白"
+  },
+  "protein_fallback": "INTERVAL SomaScan pQTL via OpenGWAS prot-a-*"
+ },
+ "outcomes": [
+  {
+   "id": "ebi-a-GCST006867",
+   "name": "T2D",
+   "note": "Xue A 2018 Nat Commun, n=655,666 (61,714 cases)。预注册 ieu-b-38 不可用，按 §6.1 实际改用"
+  },
+  {
+   "id": "ebi-a-GCST005194",
+   "name": "CAD",
+   "note": "van der Harst & Verweij 2018, n=296,525 (34,541 cases)。预注册 ieu-a-7 不可用，按 §6.1 实际改用"
+  },
+  {
+   "id": "ebi-a-GCST005186",
+   "name": "FBG",
+   "note": "Manning 2012 Nat Genet, n=58,074 (quantitative)。预注册结局集之外的新增连续代谢表型，探索性补充（§6.1）"
+  }
+ ],
+ "instrument": {
+  "cis_window_kb": 1000,
+  "pval_thresh": 5e-06,
+  "clump_r2": 0.01,
+  "clump_kb": 1000,
+  "ld_panel": "EUR (1000G Phase 3)",
+  "harmonise_palindromic_action": 2
+ },
+ "mr_methods": {
+  "primary": "mr_ivw_mre",
+  "sensitivity": [
+   "mr_ivw_fe",
+   "mr_weighted_median",
+   "mr_egger_regression"
+  ],
+  "primary_rule": "nsnp==1 → Wald ratio; nsnp<=3 → IVW-FE 首读; nsnp>=4 → IVW-MRE 首读（PREREGISTRATION §6.4）"
+ },
+ "mtest": {
+  "method": "BH-FDR",
+  "q_threshold": 0.05
+ },
+ "direction_states": [
+  "concordant",
+  "protein_only",
+  "transcript_only",
+  "both_null"
+ ],
+ "controls": {
+  "positive": [
+   "PCSK9",
+   "CETP"
+  ],
+  "negative": [
+   "HMGCR",
+   "NPC1L1",
+   "ANGPTL3",
+   "APOC3"
+  ]
+ },
+ "hypotheses": {
+  "h1": {
+   "statement": "分泌型蛋白 vs 细胞内蛋白 在 pQTL-MR 显著性率与方向一致性上存在差异",
+   "test": "Fisher/χ² on 2×2 (secreted vs intracellular × significant-yes/no)",
+   "alpha": 0.05,
+   "direction": "two-sided"
+  },
+  "h2": {
+   "statement": "负对照蛋白 LOOCV 分类器 AUR > 0.5",
+   "test": "leave-one-out AUC on 4 negative-control proteins",
+   "alpha": 0.05,
+   "direction": "one-sided (AUR>0.5)"
+  }
+ },
+ "seeds": {
+  "master": 20260805,
+  "note": "所有下游 set.seed 从 master 确定性派生，禁 rand 裸用"
+ },
+ "replication": {
+  "primary": "UKB-PPP pQTL (Sun 2023, 54,306 UKB)",
+  "secondary": "INTERVAL independent split",
+  "transcript_external": "GTEx v8 (M8/M15/M26)、FinnGen R11 (M7/M28)"
+ },
+ "reporting": {
+  "all_results_reported": true,
+  "no_fishing": true,
+  "negative_reported": true
+ }
+}

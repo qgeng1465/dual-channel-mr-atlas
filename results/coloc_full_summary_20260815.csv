@@ -1,0 +1,15 @@
+metric,value
+n_all,31373
+n_qc,31371
+n_sig,4248
+n_nsig,14294
+n_null,12829
+strong_sig,129
+strong_nsig,2
+strong_null,0
+strong_total,131
+precision_sig,0.0304
+reproduced_known,106
+known_total,106
+new_in_sig,23
+known_missing,0

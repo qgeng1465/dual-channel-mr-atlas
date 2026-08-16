@@ -1,0 +1,16 @@
+Gene,Outcome,Tier,Nearest known T2D/CAD locus,PP.H4 (coloc.abf),MR p,BH-FDR q,GWAS peak p,GTEx direction,FinnGen variant,FinnGen gene,FinnGen p
+CD101,T2D,"known-locus, 100 kb, candidate effector gene",13 kb,0.9488,0.000116,0.00652,2.47e-08,not testable,–,yes,0.00115
+C2orf49,T2D,"known-locus, 250 kb, candidate effector gene",122 kb,0.9802,1.90e-07,5.10e-05,1.22e-07,consistent,yes,yes,0.136
+RBM6,T2D,"known-locus, 100 kb, candidate effector gene",62 kb,0.9448,1.02e-05,0.00114,9.60e-07,consistent,yes,yes,6.91e-06
+CLEC3B,T2D,no T2D/CAD catalog record (weak candidate),–,0.8338,0.000132,0.00715,5.07e-05,not testable,–,–,–
+PDCD6,T2D,no T2D/CAD catalog record (weak candidate),–,0.8423,3.11e-05,0.00246,1.64e-05,not testable,yes,yes,0.247
+CWF19L1,T2D,"known-locus, 100 kb, candidate effector gene",2 kb,0.96,0.000315,0.0138,1.23e-09,consistent,–,–,–
+U6atac,T2D,"known-locus, 100 kb, candidate effector gene",25 kb,0.9571,1.71e-11,1.45e-08,1.97e-17,not testable,–,–,–
+TAGLN2,CAD,no T2D/CAD catalog record (weak candidate),–,0.9465,2.63e-05,0.00203,2.35e-05,not testable,yes,yes,0.158
+CCDC19,CAD,no T2D/CAD catalog record (weak candidate),–,0.9462,2.63e-05,0.00203,2.35e-05,not testable,yes,yes,0.158
+VSIG8,CAD,no T2D/CAD catalog record (weak candidate),–,0.9162,2.63e-05,0.00203,2.35e-05,conflicting,yes,yes,0.158
+CNNM2,CAD,"known-locus, 100 kb, candidate effector gene",11 kb,0.9366,9.85e-15,2.89e-11,4.67e-15,not testable,yes,yes,0.000631
+RIC8A,CAD,"known-locus, 100 kb, candidate effector gene",8 kb,0.8895,4.88e-05,0.00334,8.35e-06,consistent,yes,yes,0.0114
+N4BP2L2,CAD,"known-locus, 100 kb, candidate effector gene",1 kb,0.9237,1.18e-09,4.67e-07,1.19e-10,consistent,–,–,–
+SLC12A3,CAD,"known-locus, 100 kb, candidate effector gene",63 kb,0.9937,1.97e-09,7.42e-07,1.19e-09,consistent,–,–,–
+PLAUR,CAD,no T2D/CAD catalog record (weak candidate),–,0.9957,2.00e-06,0.00026,1.81e-06,not testable,–,–,–

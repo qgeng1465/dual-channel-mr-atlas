@@ -1,0 +1,7 @@
+gene,symbol,outcome,mr_p,abf_pp4,susie_pp4,n_snps,note
+ENSG00000004534,RBM6,t2d,1.022e-05,0.9448,1.0000,927,OK susie_cs_eqtl=2 susie_cs_gwas=2 conv_eqtl=FALSE_gwas=FALSE
+ENSG00000148842,CNNM2,cad,9.85e-15,0.9366,0.9996,2557,OK susie_cs_eqtl=10 susie_cs_gwas=6 conv_eqtl=FALSE_gwas=FALSE
+ENSG00000011422,PLAUR,cad,2.005e-06,0.9957,0.9990,3236,OK susie_cs_eqtl=10 susie_cs_gwas=9 conv_eqtl=FALSE_gwas=FALSE
+ENSG00000134256,CD101,t2d,0.0001164,0.9488,1.0000,1653,OK susie_cs_eqtl=10 susie_cs_gwas=8 conv_eqtl=FALSE_gwas=FALSE
+ENSG00000177963,RIC8A,cad,4.875e-05,0.8895,1.0000,2044,OK susie_cs_eqtl=3 susie_cs_gwas=3 conv_eqtl=FALSE_gwas=FALSE
+ENSG00000135862,LAMC1,cad,0.004735,0.9139,0.0000,3063,OK susie_cs_eqtl=8 susie_cs_gwas=3 conv_eqtl=FALSE_gwas=FALSE

@@ -1,0 +1,32 @@
+MR 显著集: 819 | strong(PP.H4≥0.8): 106 | non_strong: 713
+strong 结局分布: {'t2d': 58, 'cad': 46, 'fbg': 2}
+
+读取 eQTLGen significant（10.5M 行，取每基因 lead）...
+lead eQTL 基因数: 16987
+全量 lead |Z| 分位: {0.25: 9.2, 0.5: 16.3, 0.75: 29.3, 0.9: 49.2, 0.95: 64.7, 0.99: 102.6}
+strong 有 lead eQTL: 106/106 (缺 0 无 lead eQTL)
+non_strong 有 lead eQTL: 713/713 (缺 0)
+
+strong lead |Z|: 中位 16.4 | 全量分位中位 50%
+strong 超过全量 95 分位: 9/106 (8%)
+non_strong lead |Z|: 中位 16.0 | 全量分位中位 49%
+
+Mann-Whitney strong vs non_strong lead |Z|: U=37920 p=9.54e-01
+Mann-Whitney strong vs 全量: p=4.50e-01
+
+GWAS Catalog 过滤 T2D/CAD 关联...
+T2D/CAD 关联行: 13109
+T2D/CAD 唯一关联 rsID: 15921 | 位置点: 12329
+
+106 strong 位点命中 GWAS Catalog T2D/CAD: 58/106 (55%)
+  rsID 直接命中: 26 | gene±100kb 命中: 32 | 未命中: 48
+  → 未命中比例 = 本研究中'新候选'比例上限（诚实：未命中≠新发现，仅超出 GWAS Catalog 注释范围）
+  t2d: 58 位点 | 命中 31 (53%)
+  cad: 46 位点 | 命中 26 (57%)
+  fbg: 2 位点 | 命中 1 (50%)
+
+已写 /data/qiushuogeng/projects/dual-channel-mr-atlas/results/m22_efqt_power_20260815.csv
+
+=== 判定 ===
+① 工具选择偏倚：106 strong 的 lead eQTL 全部处于全量高分区（中位 50 分位）→ 否 系统性强 eQTL 富集
+② 文献基准：55% strong 位点落已报道 T2D/CAD 基因座 → 未报道 48/106 = 新候选上限

@@ -1,0 +1,9 @@
+"stage"	"count"
+"scan_fdr05_hits"	982
+"unique_genes"	906
+"genes_with_cis_iv"	906
+"genes_clump_ge1"	904
+"pairs_outcome_matched"	978
+"pairs_mr_ok"	978
+"survive_nominal"	819
+"survive_fdr"	812

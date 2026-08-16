@@ -1,0 +1,2 @@
+n_pairs_total,n_pairs_qc,n_sig_raw_p05,n_sig_fdr,n_strong_fdr_core,yield_fdr,n_known_reproduced,n_candidates,n_candidates_dropped_by_fdr,gtex_measured,gtex_consistent,gtex_conflict,finngen_measured,finngen_variant_replicated,finngen_gene_replicated,finngen_p05
+31373,31371,4248,982,121,0.1232,106,15,8,7,6,1,9,8,9,4

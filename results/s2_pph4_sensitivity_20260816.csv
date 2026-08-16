@@ -1,0 +1,5 @@
+layer,n_pairs,pph4_ge_0.9,pph4_ge_0.8,pph4_ge_0.5,note
+nominal_mr_sig,4248,77,129,323,MR p<0.05（含 validated 819 子集）
+grey,14294,2,2,9,0.05<=p<0.5
+null,12829,0,0,2,p>=0.5
+all_qc,31371,79,131,334,主口径 pp4>=0.8 strong=131

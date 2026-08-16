@@ -1,0 +1,6 @@
+"pair","gene","outcome_short","PP.H4_abf","PP.H4_susie_max","hit1","hit2","nsnp_susie","n_signal_pqtl","n_signal_gwas","cand","ok","note"
+"APOC3×FBG(争议)","APOC3","FBG",0.1772,0,"rs4938303","rs7123583",300,5,5,"A",TRUE,""
+"INSR×FBG(争议)","INSR","FBG",0.0097,NA,NA,NA,NA,NA,NA,NA,FALSE,"coloc.susie 无可信集对（pQTL 信号=4/ GWAS 信号=0），无法输出 PP.H4"
+"APOC3×T2D(争议)","APOC3","T2D",0.1077,1,"rs11216103","rs11216103",312,5,3,"B",TRUE,""
+"PCSK9×CAD(校准)","PCSK9","CAD",1,0,"rs2495477","rs72660548",307,5,5,"B",TRUE,""
+"APOC3×CAD(校准)","APOC3","CAD",0.9974,NA,NA,NA,NA,NA,NA,NA,FALSE,"susie_rss 10000 次迭代内不收敛（方案A/B 均试，LD 面板与人群不匹配）"

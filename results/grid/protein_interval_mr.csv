@@ -1,0 +1,7 @@
+"gene","outcome","nsnp","b","se","pval","method","ok","note"
+"HMGCR","ebi-a-GCST006867",0,NA,NA,NA,NA,FALSE,"cis ±1Mb 内无工具"
+"HMGCR","ebi-a-GCST005194",0,NA,NA,NA,NA,FALSE,"cis ±1Mb 内无工具"
+"HMGCR","ebi-a-GCST005186",0,NA,NA,NA,NA,FALSE,"cis ±1Mb 内无工具"
+"ANGPTL3","ebi-a-GCST006867",0,NA,NA,NA,NA,FALSE,"cis ±1Mb 内无工具"
+"ANGPTL3","ebi-a-GCST005194",0,NA,NA,NA,NA,FALSE,"cis ±1Mb 内无工具"
+"ANGPTL3","ebi-a-GCST005186",0,NA,NA,NA,NA,FALSE,"cis ±1Mb 内无工具"

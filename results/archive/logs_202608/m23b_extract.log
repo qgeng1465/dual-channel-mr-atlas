@@ -1,0 +1,25 @@
+[16:08:11] 开始按染色体抽取 full -> /data/qiushuogeng/tmp/eqtlgen_stable/bychr
+[16:16:23] 抽取完成，耗时 492s
+chr files:
+400975701 /data/qiushuogeng/tmp/eqtlgen_stable/bychr/chr10.tsv
+570837763 /data/qiushuogeng/tmp/eqtlgen_stable/bychr/chr11.tsv
+560593659 /data/qiushuogeng/tmp/eqtlgen_stable/bychr/chr12.tsv
+179549437 /data/qiushuogeng/tmp/eqtlgen_stable/bychr/chr13.tsv
+438598421 /data/qiushuogeng/tmp/eqtlgen_stable/bychr/chr14.tsv
+309639398 /data/qiushuogeng/tmp/eqtlgen_stable/bychr/chr15.tsv
+491273911 /data/qiushuogeng/tmp/eqtlgen_stable/bychr/chr16.tsv
+641748957 /data/qiushuogeng/tmp/eqtlgen_stable/bychr/chr17.tsv
+154896409 /data/qiushuogeng/tmp/eqtlgen_stable/bychr/chr18.tsv
+895368644 /data/qiushuogeng/tmp/eqtlgen_stable/bychr/chr19.tsv
+970784442 /data/qiushuogeng/tmp/eqtlgen_stable/bychr/chr1.tsv
+270885978 /data/qiushuogeng/tmp/eqtlgen_stable/bychr/chr20.tsv
+125319616 /data/qiushuogeng/tmp/eqtlgen_stable/bychr/chr21.tsv
+309778511 /data/qiushuogeng/tmp/eqtlgen_stable/bychr/chr22.tsv
+627963716 /data/qiushuogeng/tmp/eqtlgen_stable/bychr/chr2.tsv
+531424966 /data/qiushuogeng/tmp/eqtlgen_stable/bychr/chr3.tsv
+378755977 /data/qiushuogeng/tmp/eqtlgen_stable/bychr/chr4.tsv
+434393526 /data/qiushuogeng/tmp/eqtlgen_stable/bychr/chr5.tsv
+729346277 /data/qiushuogeng/tmp/eqtlgen_stable/bychr/chr6.tsv
+512259045 /data/qiushuogeng/tmp/eqtlgen_stable/bychr/chr7.tsv
+344021299 /data/qiushuogeng/tmp/eqtlgen_stable/bychr/chr8.tsv
+390604314 /data/qiushuogeng/tmp/eqtlgen_stable/bychr/chr9.tsv

@@ -1,0 +1,5 @@
+Outcome,QC-passed pairs,MR significant (BH-FDR q<0.05),MR null (0.05-0.5),MR negative (>=0.5),Strong (PP.H4>=0.8) in FDR-core,Gray-zone strong (MR-null),Negative strong
+T2D,10190,394,4579,4054,65,1,0
+CAD,14673,576,6716,5715,54,1,0
+FBG,6508,12,2999,3060,2,0,0
+Total,31371,982,14294,12829,121,2,0

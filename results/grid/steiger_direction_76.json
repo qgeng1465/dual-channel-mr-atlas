@@ -1,0 +1,541 @@
+{
+ "n": 76,
+ "fwd": 73,
+ "rev": 3,
+ "rev_sig": 0,
+ "fwd_sig": 67,
+ "pairs": [
+  {
+   "sym": "ENSG00000142669",
+   "out": "t2d",
+   "h4": 0.991,
+   "dir": "eQTL->outcome",
+   "sp": 0.0
+  },
+  {
+   "sym": "ENSG00000198492",
+   "out": "t2d",
+   "h4": 0.911,
+   "dir": "eQTL->outcome",
+   "sp": 0.0
+  },
+  {
+   "sym": "ENSG00000242142",
+   "out": "t2d",
+   "h4": 0.98,
+   "dir": "eQTL->outcome",
+   "sp": 0.0
+  },
+  {
+   "sym": "ENSG00000144749",
+   "out": "t2d",
+   "h4": 0.922,
+   "dir": "eQTL->outcome",
+   "sp": 0.0
+  },
+  {
+   "sym": "ENSG00000169379",
+   "out": "t2d",
+   "h4": 0.935,
+   "dir": "outcome->eQTL",
+   "sp": 0.8374
+  },
+  {
+   "sym": "ENSG00000163257",
+   "out": "t2d",
+   "h4": 0.839,
+   "dir": "eQTL->outcome",
+   "sp": 0.0
+  },
+  {
+   "sym": "ENSG00000230069",
+   "out": "t2d",
+   "h4": 0.981,
+   "dir": "eQTL->outcome",
+   "sp": 0.0
+  },
+  {
+   "sym": "ENSG00000251288",
+   "out": "t2d",
+   "h4": 0.981,
+   "dir": "eQTL->outcome",
+   "sp": 0.0
+  },
+  {
+   "sym": "ENSG00000248971",
+   "out": "t2d",
+   "h4": 0.981,
+   "dir": "eQTL->outcome",
+   "sp": 0.0
+  },
+  {
+   "sym": "ENSG00000145375",
+   "out": "t2d",
+   "h4": 0.916,
+   "dir": "outcome->eQTL",
+   "sp": 0.3299
+  },
+  {
+   "sym": "ENSG00000145431",
+   "out": "t2d",
+   "h4": 0.944,
+   "dir": "eQTL->outcome",
+   "sp": 0.0
+  },
+  {
+   "sym": "ENSG00000229666",
+   "out": "t2d",
+   "h4": 0.977,
+   "dir": "eQTL->outcome",
+   "sp": 0.0
+  },
+  {
+   "sym": "ENSG00000111879",
+   "out": "t2d",
+   "h4": 0.9,
+   "dir": "eQTL->outcome",
+   "sp": 0.0419
+  },
+  {
+   "sym": "ENSG00000112282",
+   "out": "t2d",
+   "h4": 0.983,
+   "dir": "eQTL->outcome",
+   "sp": 0.0
+  },
+  {
+   "sym": "ENSG00000118520",
+   "out": "t2d",
+   "h4": 0.998,
+   "dir": "eQTL->outcome",
+   "sp": 0.0
+  },
+  {
+   "sym": "ENSG00000122557",
+   "out": "t2d",
+   "h4": 0.931,
+   "dir": "eQTL->outcome",
+   "sp": 0.0
+  },
+  {
+   "sym": "ENSG00000205238",
+   "out": "t2d",
+   "h4": 0.963,
+   "dir": "eQTL->outcome",
+   "sp": 0.0
+  },
+  {
+   "sym": "ENSG00000196378",
+   "out": "t2d",
+   "h4": 0.837,
+   "dir": "eQTL->outcome",
+   "sp": 0.0
+  },
+  {
+   "sym": "ENSG00000186130",
+   "out": "t2d",
+   "h4": 0.914,
+   "dir": "eQTL->outcome",
+   "sp": 0.1197
+  },
+  {
+   "sym": "ENSG00000056586",
+   "out": "t2d",
+   "h4": 0.817,
+   "dir": "eQTL->outcome",
+   "sp": 0.0059
+  },
+  {
+   "sym": "ENSG00000160563",
+   "out": "t2d",
+   "h4": 0.926,
+   "dir": "eQTL->outcome",
+   "sp": 0.0
+  },
+  {
+   "sym": "ENSG00000148572",
+   "out": "t2d",
+   "h4": 0.811,
+   "dir": "eQTL->outcome",
+   "sp": 0.0
+  },
+  {
+   "sym": "ENSG00000242288",
+   "out": "t2d",
+   "h4": 0.941,
+   "dir": "eQTL->outcome",
+   "sp": 0.0
+  },
+  {
+   "sym": "ENSG00000251582",
+   "out": "t2d",
+   "h4": 0.905,
+   "dir": "eQTL->outcome",
+   "sp": 0.0
+  },
+  {
+   "sym": "ENSG00000196072",
+   "out": "t2d",
+   "h4": 0.974,
+   "dir": "eQTL->outcome",
+   "sp": 0.0033
+  },
+  {
+   "sym": "ENSG00000230224",
+   "out": "t2d",
+   "h4": 0.973,
+   "dir": "eQTL->outcome",
+   "sp": 0.0
+  },
+  {
+   "sym": "ENSG00000197702",
+   "out": "t2d",
+   "h4": 0.894,
+   "dir": "eQTL->outcome",
+   "sp": 0.0
+  },
+  {
+   "sym": "ENSG00000187486",
+   "out": "t2d",
+   "h4": 0.897,
+   "dir": "eQTL->outcome",
+   "sp": 0.0
+  },
+  {
+   "sym": "ENSG00000149084",
+   "out": "t2d",
+   "h4": 0.8,
+   "dir": "eQTL->outcome",
+   "sp": 0.0
+  },
+  {
+   "sym": "ENSG00000260233",
+   "out": "t2d",
+   "h4": 0.977,
+   "dir": "eQTL->outcome",
+   "sp": 0.0
+  },
+  {
+   "sym": "ENSG00000073614",
+   "out": "t2d",
+   "h4": 0.817,
+   "dir": "eQTL->outcome",
+   "sp": 0.0
+  },
+  {
+   "sym": "ENSG00000111642",
+   "out": "t2d",
+   "h4": 0.963,
+   "dir": "eQTL->outcome",
+   "sp": 0.0158
+  },
+  {
+   "sym": "ENSG00000157045",
+   "out": "t2d",
+   "h4": 0.815,
+   "dir": "eQTL->outcome",
+   "sp": 0.0
+  },
+  {
+   "sym": "ENSG00000108262",
+   "out": "t2d",
+   "h4": 0.894,
+   "dir": "eQTL->outcome",
+   "sp": 0.0
+  },
+  {
+   "sym": "ENSG00000141452",
+   "out": "t2d",
+   "h4": 0.989,
+   "dir": "eQTL->outcome",
+   "sp": 0.0
+  },
+  {
+   "sym": "ENSG00000130856",
+   "out": "t2d",
+   "h4": 0.936,
+   "dir": "eQTL->outcome",
+   "sp": 0.0
+  },
+  {
+   "sym": "ENSG00000267698",
+   "out": "t2d",
+   "h4": 0.85,
+   "dir": "eQTL->outcome",
+   "sp": 0.0
+  },
+  {
+   "sym": "ENSG00000161277",
+   "out": "t2d",
+   "h4": 0.951,
+   "dir": "eQTL->outcome",
+   "sp": 0.0
+  },
+  {
+   "sym": "ENSG00000235513",
+   "out": "t2d",
+   "h4": 0.937,
+   "dir": "eQTL->outcome",
+   "sp": 0.0
+  },
+  {
+   "sym": "ENSG00000237429",
+   "out": "cad",
+   "h4": 0.93,
+   "dir": "eQTL->outcome",
+   "sp": 0.0129
+  },
+  {
+   "sym": "ENSG00000212541",
+   "out": "cad",
+   "h4": 0.989,
+   "dir": "eQTL->outcome",
+   "sp": 0.0
+  },
+  {
+   "sym": "ENSG00000132128",
+   "out": "cad",
+   "h4": 0.909,
+   "dir": "outcome->eQTL",
+   "sp": 0.4835
+  },
+  {
+   "sym": "ENSG00000264584",
+   "out": "cad",
+   "h4": 0.921,
+   "dir": "eQTL->outcome",
+   "sp": 0.0
+  },
+  {
+   "sym": "ENSG00000203288",
+   "out": "cad",
+   "h4": 0.883,
+   "dir": "eQTL->outcome",
+   "sp": 0.0
+  },
+  {
+   "sym": "ENSG00000136715",
+   "out": "cad",
+   "h4": 0.822,
+   "dir": "eQTL->outcome",
+   "sp": 0.0
+  },
+  {
+   "sym": "ENSG00000054356",
+   "out": "cad",
+   "h4": 0.944,
+   "dir": "eQTL->outcome",
+   "sp": 0.0
+  },
+  {
+   "sym": "ENSG00000145214",
+   "out": "cad",
+   "h4": 0.818,
+   "dir": "eQTL->outcome",
+   "sp": 0.0
+  },
+  {
+   "sym": "ENSG00000150627",
+   "out": "cad",
+   "h4": 0.88,
+   "dir": "eQTL->outcome",
+   "sp": 0.0
+  },
+  {
+   "sym": "ENSG00000245556",
+   "out": "cad",
+   "h4": 0.812,
+   "dir": "eQTL->outcome",
+   "sp": 0.0
+  },
+  {
+   "sym": "ENSG00000196821",
+   "out": "cad",
+   "h4": 0.894,
+   "dir": "eQTL->outcome",
+   "sp": 0.0
+  },
+  {
+   "sym": "ENSG00000164535",
+   "out": "cad",
+   "h4": 0.964,
+   "dir": "eQTL->outcome",
+   "sp": 0.0
+  },
+  {
+   "sym": "ENSG00000104497",
+   "out": "cad",
+   "h4": 0.874,
+   "dir": "eQTL->outcome",
+   "sp": 0.0
+  },
+  {
+   "sym": "ENSG00000151465",
+   "out": "cad",
+   "h4": 0.918,
+   "dir": "eQTL->outcome",
+   "sp": 0.0
+  },
+  {
+   "sym": "ENSG00000079393",
+   "out": "cad",
+   "h4": 0.873,
+   "dir": "eQTL->outcome",
+   "sp": 0.2879
+  },
+  {
+   "sym": "ENSG00000108219",
+   "out": "cad",
+   "h4": 0.996,
+   "dir": "eQTL->outcome",
+   "sp": 0.0
+  },
+  {
+   "sym": "ENSG00000107779",
+   "out": "cad",
+   "h4": 0.91,
+   "dir": "eQTL->outcome",
+   "sp": 0.0
+  },
+  {
+   "sym": "ENSG00000107798",
+   "out": "cad",
+   "h4": 0.999,
+   "dir": "eQTL->outcome",
+   "sp": 0.0
+  },
+  {
+   "sym": "ENSG00000138131",
+   "out": "cad",
+   "h4": 0.944,
+   "dir": "eQTL->outcome",
+   "sp": 0.0976
+  },
+  {
+   "sym": "ENSG00000213277",
+   "out": "cad",
+   "h4": 0.916,
+   "dir": "eQTL->outcome",
+   "sp": 0.0503
+  },
+  {
+   "sym": "ENSG00000246889",
+   "out": "cad",
+   "h4": 0.934,
+   "dir": "eQTL->outcome",
+   "sp": 0.0
+  },
+  {
+   "sym": "ENSG00000170145",
+   "out": "cad",
+   "h4": 0.856,
+   "dir": "eQTL->outcome",
+   "sp": 0.0
+  },
+  {
+   "sym": "ENSG00000256269",
+   "out": "cad",
+   "h4": 0.886,
+   "dir": "eQTL->outcome",
+   "sp": 0.0
+  },
+  {
+   "sym": "ENSG00000181264",
+   "out": "cad",
+   "h4": 0.866,
+   "dir": "eQTL->outcome",
+   "sp": 0.2829
+  },
+  {
+   "sym": "ENSG00000090612",
+   "out": "cad",
+   "h4": 0.867,
+   "dir": "eQTL->outcome",
+   "sp": 0.0
+  },
+  {
+   "sym": "ENSG00000119684",
+   "out": "cad",
+   "h4": 0.875,
+   "dir": "eQTL->outcome",
+   "sp": 0.0
+  },
+  {
+   "sym": "ENSG00000119718",
+   "out": "cad",
+   "h4": 0.961,
+   "dir": "eQTL->outcome",
+   "sp": 0.0
+  },
+  {
+   "sym": "ENSG00000264386",
+   "out": "cad",
+   "h4": 0.806,
+   "dir": "eQTL->outcome",
+   "sp": 0.0
+  },
+  {
+   "sym": "ENSG00000161395",
+   "out": "cad",
+   "h4": 0.89,
+   "dir": "eQTL->outcome",
+   "sp": 0.0
+  },
+  {
+   "sym": "ENSG00000267342",
+   "out": "cad",
+   "h4": 0.867,
+   "dir": "eQTL->outcome",
+   "sp": 0.0
+  },
+  {
+   "sym": "ENSG00000130475",
+   "out": "cad",
+   "h4": 0.953,
+   "dir": "eQTL->outcome",
+   "sp": 0.0
+  },
+  {
+   "sym": "ENSG00000118620",
+   "out": "cad",
+   "h4": 0.812,
+   "dir": "eQTL->outcome",
+   "sp": 0.0
+  },
+  {
+   "sym": "ENSG00000215251",
+   "out": "cad",
+   "h4": 0.904,
+   "dir": "eQTL->outcome",
+   "sp": 0.0
+  },
+  {
+   "sym": "ENSG00000132793",
+   "out": "cad",
+   "h4": 0.956,
+   "dir": "eQTL->outcome",
+   "sp": 0.694
+  },
+  {
+   "sym": "ENSG00000180530",
+   "out": "cad",
+   "h4": 0.998,
+   "dir": "eQTL->outcome",
+   "sp": 0.0
+  },
+  {
+   "sym": "ENSG00000100296",
+   "out": "cad",
+   "h4": 0.923,
+   "dir": "eQTL->outcome",
+   "sp": 0.0
+  },
+  {
+   "sym": "ENSG00000135070",
+   "out": "fbg",
+   "h4": 0.919,
+   "dir": "eQTL->outcome",
+   "sp": 0.0
+  }
+ ]
+}

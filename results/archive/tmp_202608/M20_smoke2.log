@@ -1,0 +1,38 @@
+试点对：灰区 45  阴性 45 
+Key: <SNP>
+                    SNP  Zscore AssessedAllele OtherAllele            Gene
+                 <char>   <num>         <char>      <char>          <char>
+     1: chr10:126301970 -2.1840              C           T ENSG00000203791
+     2: chr10:126691885 -1.2085              T           C ENSG00000203791
+     3:   chr10:6265955  1.2841              T           C ENSG00000065675
+     4:  chr10:71168653  0.0387              T           G ENSG00000180817
+     5:   chr10:7214484  1.5463              A           G ENSG00000065675
+    ---                                                                   
+709223:       rs9999936  0.0733              G           A ENSG00000005059
+709224:       rs9999963  0.7731              C           T ENSG00000163312
+709225:       rs9999972 -0.7492              G           A ENSG00000134962
+709226:       rs9999985 -1.0487              G           A ENSG00000134962
+709227:       rs9999990  0.5680              T           C ENSG00000163281
+        NrSamples AlleleA AlleleB AlleleB_all        eaf
+            <int>  <char>  <char>       <num>      <num>
+     1:     13124       T       C  0.07505334 0.07505334
+     2:      1428       C       T  0.02485994 0.02485994
+     3:      1428       C       T  0.01295518 0.01295518
+     4:      1744       T       G  0.52671943 0.47328057
+     5:     12436       G       A  0.04490994 0.04490994
+    ---                                                 
+709223:       338       A       G  0.01479290 0.01479290
+709224:     14263       T       C  0.03222399 0.03222399
+709225:     21696       A       G  0.01813232 0.01813232
+709226:     28765       G       A  0.96415525 0.03584475
+709227:       338       C       T  0.01331361 0.01331361
+           used  (Mb) gc trigger   (Mb)  max used  (Mb)
+Ncells 12946900 691.5   20955635 1119.2  12958591 692.1
+Vcells 88417622 674.6  151529406 1156.1 116056166 885.5
+[ 13:37:32 ]  eQTL cis 变异（pilot 基因）:  716645  | 唯一基因:  90 
+[ 13:37:53 ]  t2d  行:  5030727 
+[ 13:38:24 ]  cad  行:  7904237 
+[ 13:38:31 ]  fbg  行:  2628881 
+Error in p$GeneChr : $ operator is invalid for atomic vectors
+Calls: [ ... tryCatchList -> tryCatchOne -> <Anonymous> -> .checkTypos
+Execution halted

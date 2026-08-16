@@ -1,0 +1,4 @@
+gene,outcome,protein_b,protein_p,transcript_b,transcript_p,both_sig,direction_consistent
+INSR,FBG,0.1247,0.0121218380894486,-0.0669,0.391796555523492,False,False
+INSR,T2D,0.0782,0.348997306855266,-0.9382,0.0013266806351479,False,False
+INSR,CAD,-0.0502,0.398637618375754,0.0924,0.290086900672862,False,False
