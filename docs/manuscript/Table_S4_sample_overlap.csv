@@ -1,0 +1,16 @@
+symbol,outcome,lead_snp,alt_gwas,alt_effect_allele,alt_beta,alt_se,alt_p,primary_mr_dir,alt_mr_dir,concordant,note
+C2orf49,t2d,rs4851758,DIAGRAM trans-ethnic (Mahajan 2014),T,0.00995,,8.1E-01,1.0,1,True,
+CD101,t2d,rs12130298,DIAGRAM trans-ethnic (Mahajan 2014),A,0.067659,,3.8E-01,1.0,1,True,
+CLEC3B,t2d,rs77100387,Scott 2017 (European 1000G meta),A,0.022,0.013,0.072,1.0,1,True,absent_from_transethnic_meta;_scott2017_euro_secondary
+CWF19L1,t2d,rs17668357,DIAGRAM trans-ethnic (Mahajan 2014),G,0.039221,,9.2E-03,-1.0,-1,True,
+PDCD6,t2d,rs12332382,Scott 2017 (European 1000G meta),T,0.018,0.019,0.35,1.0,1,True,absent_from_transethnic_meta;_scott2017_euro_secondary
+RBM6,t2d,rs2245365,DIAGRAM trans-ethnic (Mahajan 2014),C,0.00995,,3.1E-01,-1.0,-1,True,
+U6atac,t2d,rs12780155,Scott 2017 (European 1000G meta),A,0.059,0.015,5.4e-05,1.0,1,True,absent_from_transethnic_meta;_scott2017_euro_secondary
+CCDC19,cad,rs2789422,"Nikpay 2015 (CARDIoGRAMplusC4D, pre-UKB)",A,-0.047312,0.0100416,2.46e-06,1.0,1,True,
+CNNM2,cad,rs11191447,"Nikpay 2015 (CARDIoGRAMplusC4D, pre-UKB)",T,-0.074361,0.0140934,1.32e-07,1.0,1,True,
+N4BP2L2,cad,rs1123462,"Nikpay 2015 (CARDIoGRAMplusC4D, pre-UKB)",T,-0.036792,0.0102327,.0003237,-1.0,-1,True,
+PLAUR,cad,rs4760,"Nikpay 2015 (CARDIoGRAMplusC4D, pre-UKB)",G,0.049656,0.0162866,.0022969,1.0,1,True,
+RIC8A,cad,rs6598075,"Nikpay 2015 (CARDIoGRAMplusC4D, pre-UKB)",G,-0.023221,0.0108747,.0327351,-1.0,-1,True,
+SLC12A3,cad,rs56228609,"Nikpay 2015 (CARDIoGRAMplusC4D, pre-UKB)",T,-0.031648,0.0105,.0025774,1.0,1,True,
+TAGLN2,cad,rs2789422,"Nikpay 2015 (CARDIoGRAMplusC4D, pre-UKB)",A,-0.047312,0.0100416,2.46e-06,1.0,1,True,
+VSIG8,cad,rs2789422,"Nikpay 2015 (CARDIoGRAMplusC4D, pre-UKB)",A,-0.047312,0.0100416,2.46e-06,1.0,1,True,

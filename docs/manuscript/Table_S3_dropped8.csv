@@ -1,0 +1,9 @@
+symbol,outcome,mr_p,padj_BH,pp4,gwas_min_p,gtex_direction,finngen_replicated,finngen_p,finngen_note
+LAMC1,cad,0.00473453755481674,0.0865,0.913924786575666,1.294e-05,consistent,yes,0.0176445,replicated in FinnGen (p=0.018)
+TPD52,fbg,0.00125618274546358,0.2404,0.912810257527611,3.135e-05,consistent,not_testable,,no FinnGen fasting-glucose phenotype
+SENP6,cad,0.00485248587190293,0.0877,0.905554679709319,4.58e-05,consistent,yes,0.949864,directionally concordant
+HMGN3,cad,0.0125975059135519,0.1588,0.888398848225281,5.227e-05,consistent,yes,0.418367,directionally concordant
+MT3,fbg,0.0001199864408978,0.0601,0.88003037094877,9.169e-05,consistent,not_testable,,no FinnGen fasting-glucose phenotype
+RPL13,t2d,0.0114438177317366,0.1499,0.870151705598685,5.251e-06,consistent,not_testable,,original GWAS sumstats missing
+ZBTB46,cad,0.010691251863275,0.1453,0.844244300906311,5.562e-07,consistent,not_alignable,,FinnGen lead not alignable
+ZNF100,cad,0.0234105961611167,0.2245,0.81768672707887,3.973e-05,consistent,not_alignable,,FinnGen lead not alignable

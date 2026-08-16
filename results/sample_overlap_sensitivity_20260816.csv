@@ -1,0 +1,16 @@
+symbol,outcome,lead_snp,eqtlgen_A1,eqtlgen_z,alt_gwas_id,alt_effect_allele,alt_beta,alt_se,alt_p,primary_mr_dir,alt_mr_dir,concordant,note
+PLAUR,cad,rs4760,G,11.5325,"GCST003116 (Nikpay 2015 CARDIoGRAMplusC4D, pre-UKB)",G,0.049656,0.0162866,.0022969,1.0,1,True,
+SLC12A3,cad,rs56228609,T,-8.363,"GCST003116 (Nikpay 2015 CARDIoGRAMplusC4D, pre-UKB)",T,-0.031648,0.0105,.0025774,1.0,1,True,
+C2orf49,t2d,rs4851758,T,7.2014,"diagram.mega-meta.txt (DIAGRAM trans-ethnic T2D meta, pre-UKB; Mahajan et al. 2014)",T,0.00995,,8.1E-01,1.0,1,True,
+CWF19L1,t2d,rs17668357,C,86.5516,"diagram.mega-meta.txt (DIAGRAM trans-ethnic T2D meta, pre-UKB; Mahajan et al. 2014)",G,0.039221,,9.2E-03,-1.0,-1,True,
+U6atac,t2d,rs12780155,A,4.843,"METAANALYSIS_DIAGRAM_SE1.txt (Scott et al. 2017 European 1000G meta, pre-UKB; secondary)",A,0.059,0.015,5.4e-05,1.0,1,True,absent_from_transethnic_meta;_scott2017_euro_secondary
+CD101,t2d,rs12130298,C,-58.4668,"diagram.mega-meta.txt (DIAGRAM trans-ethnic T2D meta, pre-UKB; Mahajan et al. 2014)",A,0.067659,,3.8E-01,1.0,1,True,
+TAGLN2,cad,rs2789422,A,-31.0058,"GCST003116 (Nikpay 2015 CARDIoGRAMplusC4D, pre-UKB)",A,-0.047312,0.0100416,2.46e-06,1.0,1,True,
+CCDC19,cad,rs2789422,A,-17.9384,"GCST003116 (Nikpay 2015 CARDIoGRAMplusC4D, pre-UKB)",A,-0.047312,0.0100416,2.46e-06,1.0,1,True,
+RBM6,t2d,rs2245365,A,101.8767,"diagram.mega-meta.txt (DIAGRAM trans-ethnic T2D meta, pre-UKB; Mahajan et al. 2014)",C,0.00995,,3.1E-01,-1.0,-1,True,
+CNNM2,cad,rs11191447,T,-6.1715,"GCST003116 (Nikpay 2015 CARDIoGRAMplusC4D, pre-UKB)",T,-0.074361,0.0140934,1.32e-07,1.0,1,True,
+N4BP2L2,cad,rs1123462,T,44.3887,"GCST003116 (Nikpay 2015 CARDIoGRAMplusC4D, pre-UKB)",T,-0.036792,0.0102327,.0003237,-1.0,-1,True,
+VSIG8,cad,rs2789422,A,-10.9416,"GCST003116 (Nikpay 2015 CARDIoGRAMplusC4D, pre-UKB)",A,-0.047312,0.0100416,2.46e-06,1.0,1,True,
+RIC8A,cad,rs6598075,G,27.9039,"GCST003116 (Nikpay 2015 CARDIoGRAMplusC4D, pre-UKB)",G,-0.023221,0.0108747,.0327351,-1.0,-1,True,
+PDCD6,t2d,rs12332382,T,27.9517,"METAANALYSIS_DIAGRAM_SE1.txt (Scott et al. 2017 European 1000G meta, pre-UKB; secondary)",T,0.018,0.019,0.35,1.0,1,True,absent_from_transethnic_meta;_scott2017_euro_secondary
+CLEC3B,t2d,rs77100387,A,47.3822,"METAANALYSIS_DIAGRAM_SE1.txt (Scott et al. 2017 European 1000G meta, pre-UKB; secondary)",A,0.022,0.013,0.072,1.0,1,True,absent_from_transethnic_meta;_scott2017_euro_secondary

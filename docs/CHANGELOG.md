@@ -1,8 +1,25 @@
 # CHANGELOG — 变更记录
 
+## 2026-08-16 — 稿件终稿收尾（审稿 5 点 + 3 点修订落地、样本重叠敏感性、引用扩至 ~50、表文件命名修正）
+
+### 审稿修订（manuscript.md）
+- **口径主从**：FDR-core（982 MR-sig → 121 strong，12.32%）为主口径，nominal 漏斗为探索性敏感性；Fig 2/Fig 3 图注重写为 6 面板映射（ECDF/strong 率/PP.H4 阈值/置换/38.7% GWAS 峰 caveat/峰 p 分布）。
+- **15 vs 23**：8 个 FDR 掉落候选（LAMC1/TPD52/SENP6/HMGN3/MT3/RPL13/ZBTB46/ZNF100）入 Table S3 + Discussion 保守性段落；LAMC1 FinnGen p=0.018 如实披露。
+- **样本重叠敏感性（新分析，15/15 一致）**：`results/sample_overlap_sensitivity_20260816.csv`——15 候选的 MR 方向用 pre-UKB 结局 GWAS 重估（CAD=Nikpay 2015 CARDIoGRAMplusC4D ~185k；T2D=DIAGRAM 跨族裔 Mahajan 2014，3 个基因走 Scott 2017 European 1000G 次级），8/8 CAD + 7/7 T2D 方向全一致（11 正/4 负/0 冲突）。已整合进 Methods §2.2 新小节、Results §3.6、Discussion 首要局限（"方向偏倚排除，但全扫描 coloc 支持仍不能排除重叠扭曲"）、新 Table S4。诚实 caveat：T2D 主 GWAS（Xue 2018）为东亚样本本已与欧洲 eQTLGen 重叠极少，T2D 侧为保守的 belt-and-suspenders。
+- **coloc.susie 重构**：非收敛（max_iter=1000 仍不收敛）→ §3.7 标为 exploratory，LAMC1 排除依据改为多信号证据（8 eQTL credible sets vs 3 GWAS sets、max z=4.32、无共享变异）。
+- **Discussion 分层解释（Tier 1/2/3）+ Intro P3 召回缺口 + 摘要 161 词 FDR-core 口径**均落地。
+- **引用扩至 51 条（全部核实为真）**：引入 29 个新 [@key]（MR 基础 davey2003/lawlor2008/dsmith2014/sanderson2022/ference2012/ference2017/holmes2015/schmidt2017；eQTL 与数据源 westra2013/gtex2015/gtex2017/bycroft2018/elsworth2020；T2D/CAD/FG 遗传 morris2012/spracklen2020/deloukas2013/dupuis2010/scott2012/mahajan2018；MR 方法 pierce2013/hemiani2018/bowden2017/verbanck2018/burgess2011/burgess2017；fine-mapping benner2016/benner2017/gaulton2015/hormozdiari2016），插入 Intro P1/P2、§2.1/2.2/2.3 自然位置。全部 51 条经 NCBI PubMed eutils / Crossref 逐条核实（51/51 命中真实记录；纠正 scott2012 标题、spracklen2020 期刊为 Nature、bowden2017 期刊为 Stat Med、benner2017 标题为 "Genomic Regions"、elsworth2020 为 bioRxiv 预印本）。`refs.json`/`references.md` 按正文首次出现序重排并程序化校验一致（51/51）；顺带修正 §2.3 "five"→"six"（coloc.susie 实跑 6 位点含 LAMC1）及 Fig 4 图注歧义；DOCX 已重建验证（References 51 条连续、上标 1-13/29-38 抽样核对）。
+
+### 表文件命名修正（docs/manuscript/）
+- 表编号与正文对齐：`Table_S2_candidates.csv` → `Table_2_candidates.csv`（主表 2，正文引用已用该名）；`Table_S3_coloc_susie_diagnostics.csv` → `Table_S2_coloc_susie_diagnostics.csv`（正文 S2）；`Table_S4_dropped8.csv` → `Table_S3_dropped8.csv`（正文 S3）；新增 `Table_S4_sample_overlap.csv`（样本重叠敏感性，15 行）。
+- Table 2 由"仅描述"改为 manuscript.md 内联 markdown 表（15 行，T2D 7 + CAD 8，M36 渲染用）；Table 1 保持双子表（数据源 + 精度漏斗）。
+
+### 文档合并（docs/）
+- 5 份流程文档合并为 2 份主文档：`PAPER_WRITING_PLAN_20260816.md`（写作方案 + 附录 A FINAL_STORY + B JOURNAL_TARGETS + C REVIEWER_IF）、`INTEGRITY_AUDIT_20260816.md`（审计 + 附录 A verification + B COLOC_SUSIE）；原文档入 `docs/archive/`；README/各 doc/脚本引用全量更新，无悬挂引用。
+
 ## 2026-08-15 — 对抗性评审定档（单篇完整故事 → HMG 5.5–6）+ 可行性试点升级 + 全量 GWAS 就绪
 
-### 破局方案受对抗性评审并定档（docs/verification_20260815.md）
+### 破局方案受对抗性评审并定档（docs/archive/verification_20260815.md）
 - 独立评估 agent 对 `results/BREAKTHROUGH_PLAN_20260815.md` 做对抗性评审，裁决：按"四章节 + 介质层生物学 + 冲 8-9 分"形态**不值得做**（不值得投入资源），但**按诚实形态值得做**。
 - **关键评审结论（已全部核实为真）**：
   1. **召回统计循环论证**：`MR 召回 = P(MR p<0.05 | coloc≥0.8)` 里 coloc 与 MR 共享输入（同 GWAS + 同 eQTL 子集），两方向概率数学上互相蕴含，召回维度是伪读数。

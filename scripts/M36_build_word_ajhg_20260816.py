@@ -32,17 +32,13 @@ OUTP = f"{DOCS}/AJHG_submission_Qiushuo_Geng_20260816.docx"
 REFS = json.load(open(f"{DOCS}/refs.json"))
 
 FIG_FILES = {
-    1: f"{FIGD}/20260816_F1_workflow_v2.png",
-    2: f"{FIGD}/20260816_F2_overview_v2.png",
-    3: f"{FIGD}/20260816_F3_yield_v2.png",
-    4: f"{FIGD}/20260816_F4_negative_v2.png",
-    5: f"{FIGD}/20260816_F5_locuszoom_mirror_v2.png",
-    6: f"{FIGD}/20260816_F6_candidates15_v2.png",
-    7: f"{FIGD}/20260816_F7_replication_v2.png",
-    8: f"{FIGD}/20260816_F8_susie_v2.png",
-    9: f"{FIGD}/20260816_F9_gwas_caveat_v2.png",
+    1: f"{FIGD}/20260816_Fig1_design_genome.png",
+    2: f"{FIGD}/20260816_Fig2_yield_funnel.png",
+    3: f"{FIGD}/20260816_Fig3_calibration.png",
+    4: f"{FIGD}/20260816_Fig4_regional.png",
+    5: f"{FIGD}/20260816_Fig5_candidates.png",
 }
-S1_FILE = f"{FIGD}/20260816_S1_resources_v2.png"
+S1_FILE = f"{FIGD}/20260816_FigS1_susie.png"
 
 # combined inline tokenizer: **bold**, *italic*, [@key]
 INLINE = re.compile(r"(\*\*[^*]+\*\*|\*[^*]+\*|\[@[a-z0-9]+\])")
@@ -317,7 +313,7 @@ def main():
                 num, body = strip_figure_legend(payload)
                 if num is not None:
                     figure_legends[num] = body
-    for num in range(1, 10):
+    for num in range(1, 6):
         legend = figure_legends.get(num, "")
         if not legend:
             print(f"  !! missing legend for Figure {num}")
@@ -332,9 +328,13 @@ def main():
     p = doc.add_paragraph(); p.alignment = WD_ALIGN_PARAGRAPH.CENTER
     run = p.add_run(); run.add_picture(S1_FILE, width=Inches(6.3))
     cap = doc.add_paragraph(); set_double(cap)
-    add_inline(cap, "**Supplemental Figure S1.** Data resources and atlas layers. "
-                    "(A) Data sources and analysis flow. (B) Atlas resource layers released with the Zenodo DOI. "
-                    "(C) FinnGen R11 alignment coverage of the candidate-effector genes.",
+    add_inline(cap, "**Supplemental Figure S1.** coloc.susie sensitivity of strong-colocalization calls. "
+                    "Paired coloc.abf vs coloc.susie PP.H4 for the six adjudicated loci (RBM6×T2D, CNNM2×CAD, "
+                    "PLAUR×CAD, CD101×T2D, RIC8A×CAD, LAMC1×CAD). SuSiE credible-set counts per side and "
+                    "non-convergence markers (✗, all runs) are annotated. LAMC1×CAD (abf PP.H4 = 0.9139 → "
+                    "SuSiE 0.0000) is highlighted; it is excluded from the candidate set on independent FDR and "
+                    "multi-signal grounds. Because coloc.susie did not converge under external LD for any tested "
+                    "locus, SuSiE posteriors are reported as exploratory only and are not used for primary inference.",
                font_size=11)
 
     # ---------- Supplemental Items ----------

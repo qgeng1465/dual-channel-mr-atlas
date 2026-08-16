@@ -78,7 +78,7 @@
 ## 三、摘要模板（≤200 词，已压缩）
 
 > 背景句（一句话问题）→ 方法（数据+工具）→ 结果（三个数字组）→ 结论（诚实定位）。
-> 数字全部与 FINAL_STORY/INTEGRITY_AUDIT 一致；候选措辞"hypothesis-generating"。
+> 数字全部与 PAPER_WRITING_PLAN（附录 A）/INTEGRITY_AUDIT 一致；候选措辞"hypothesis-generating"。
 
 草稿（~195 词）：
 
@@ -195,7 +195,7 @@ Hemerich 组**——皆为潜在竞争者或可能同审同一稿件）。
 - [ ] Data Availability 落 Zenodo 包并取 DOI
 - [ ] Ethics/性别祖先/Contributions/Code 模板定稿
 - [ ] 推荐审稿人名单核实（不编造）
-- [ ] Cover Letter（差异化卖点：全转录组尺度 + 操作特性曲线 + 双复现，见 FINAL_STORY §五）
+- [ ] Cover Letter（差异化卖点：全转录组尺度 + 操作特性曲线 + 双复现，见 `docs/PAPER_WRITING_PLAN_20260816.md` 附录 A §五）
 - [ ] 方法学审稿雷点堵住（§八.2）：条件分析敏感性 / hg38-hg19 坐标校验 / 欧洲祖先披露 / PP.H4 阈值敏感性 / FinnGen 57% 覆盖解释
 - [ ] cover letter <1 页（§十：首段"可验证的信任边界 + 可下载图谱"、为何 AJHG、披露预印本+AI 使用）
 - [ ] commit 收口（作者 qgeng1465，无 Co-Authored-By；push 暂缓）
@@ -225,4 +225,4 @@ Hemerich 组**——皆为潜在竞争者或可能同审同一稿件）。
 2. 说明**为何是 AJHG**（而非 HGG Advances/Genome Research/Nat Genet）。
 3. 披露：预印本（如适用）、受限数据、dbGaP/EGA 登记、ancestry 表述、**AI 工具使用**。
 4. 建议审稿人 3–5 名（§六）。
-5. 差异化卖点（FINAL_STORY §五）：全转录组尺度 31,373 对 + 操作特性曲线（方法学原创）+ 跨 3 结局 + GTEx/FinnGen 双独立复现；与 Ray 互补（他答细胞类型，我们答工具信任边界）。
+5. 差异化卖点（PAPER_WRITING_PLAN 附录 A §五）：全转录组尺度 31,373 对 + 操作特性曲线（方法学原创）+ 跨 3 结局 + GTEx/FinnGen 双独立复现；与 Ray 互补（他答细胞类型，我们答工具信任边界）。

@@ -71,12 +71,12 @@ coloc 采用**纯 rsID 匹配**（build 无关），规避跨数据源坐标错�
 - [x] **15 候选复现表**：`results/candidate15_replication_20260816.csv`（tier/PP.H4/mr_p/padj/GTEx direction/FinnGen variant+gene/p）
 - [x] **全量图谱表**：`results/coloc_full_{t2d,cad,fbg}_20260815.csv`（31,373 对全字段：gene/symbol/outcome/mr_b/mr_p/gwas_min_p/eqtl_F_max/nsnp/pp4/ok/note）
 - [x] **操作特性漏斗**：`results/m36b_funnel_20260816.csv`（名义曲线 + FDR-core 12.32% + grid 12.96%）+ `results/m36b_summary_20260816.csv`
-- [x] **coloc.susie 敏感性**：`results/m34_coloc_susie_20260816.csv` + 评估文档 `docs/COLOC_SUSIE_ASSESSMENT_20260816.md`
+- [x] **coloc.susie 敏感性**：`results/m34_coloc_susie_20260816.csv` + 评估文档 `docs/INTEGRITY_AUDIT_20260816.md`（附录 B）
 - [x] **全量 strong 子集**：`results/strong_all_subset_20260816.csv`（121 FDR-core strong + 2 灰区 AP3S2×T2D/ZNF19×CAD，set/status 标注；106 known 见 `results/grid/transcript_coloc_hits.csv`）
 - [x] **schema 文档**：`docs/SCHEMA_20260816.md`（全部结果表列字典 + 口径定义 + build + 阈值 + 缺失标记）
 - [x] **README 复现指南**：`README.md` 摘要 + 新增「复现指南（Reproducibility）」流水线表（数据源→脚本→产物，M20–M36b）
 
-### 4.2 发布渠道（按 REVIEWER_IF_ADVICE 分级）
+### 4.2 发布渠道（按 `docs/PAPER_WRITING_PLAN_20260816.md` 附录 C 分级）
 1. **Zenodo**（免费，期刊普遍要求，拿 DOI）→ 全量表 + 脚本 + schema + README 打包上传（**需作者账号**）
 2. **GitHub**（公开仓库，脚本 + 结果 + 图 + manuscript）——2026-08-16 已 push 至 qgeng1465/dual-channel-mr-atlas（**默认私有，需作者一键公开**）
 3. OSF 项目页（可选，作为数据/代码链接聚合页，**非预注册**）
@@ -104,7 +104,7 @@ coloc 采用**纯 rsID 匹配**（build 无关），规避跨数据源坐标错�
 | "catalog 未报道"≠"文献未报道" | ✅ | 全文措辞纪律 |
 | 41/106=38.7% GWAS 峰显著 caveat 披露 | ✅ | manuscript §3.5 + Fig 9 |
 | 覆盖 9/15=60% FinnGen 对齐披露 | ✅ | manuscript §3.6 |
-| coloc.susie 外样本 LD 不收敛（exploratory）披露 | ✅ | COLOC_SUSIE_ASSESSMENT + manuscript §3.7 |
+| coloc.susie 外样本 LD 不收敛（exploratory）披露 | ✅ | INTEGRITY_AUDIT（附录 B）+ manuscript §3.7 |
 | 样本重叠（Burgess 2016）作为首要局限 | ✅ | manuscript §2.2 + §4 |
 | 全网格落盘（含失败/空结果） | ✅ | 31,373 对含 note 列 |
 | p12 主口径 vs 敏感性、Wilson CI | ✅ | FACTS §2 |

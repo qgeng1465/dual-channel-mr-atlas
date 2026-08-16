@@ -37,7 +37,7 @@ LD 下不收敛（exploratory，LAMC1 双排除）。**关键数字与复现统�
 5. **方法学操作特性**（`m36b_funnel_20260816.csv`）：MR p 阈值**单调校准** strong 率 **0.71%→25.6%**；**FDR-core 12.32% 与 stage-2 grid 12.96% 收敛**；全量显著（raw）3.04%——首次量化"MR 筛药靶"的校准曲线。
 6. **LD 独立位点 + 阈值敏感性**：PP.H4 阈值敏感性（FDR-core 内 ≥0.9：7.5% / ≥0.8：12.3% / ≥0.5：29.5%；集外 ≥0.5：11、≥0.8：2）**单调性不随阈值改变**。
 
-**主结论（v0.14 定稿）**：从"警示性阴性结论"升级为**图谱资源 + 方法学操作特性 + 候选效应基因发现**三合一诚实正结果。完整故事见 `docs/FINAL_STORY_20260816.md`，定稿稿件见 `docs/manuscript/`，图见 `results/figures/20260816_F*_v2.png`。
+**主结论（v0.14 定稿）**：从"警示性阴性结论"升级为**图谱资源 + 方法学操作特性 + 候选效应基因发现**三合一诚实正结果。完整故事见 `docs/PAPER_WRITING_PLAN_20260816.md（附录 A）`，定稿稿件见 `docs/manuscript/`，图见 `results/figures/20260816_F*_v2.png`。
 
 ---
 
@@ -64,7 +64,7 @@ LD 下不收敛（exploratory，LAMC1 双排除）。**关键数字与复现统�
 
 ## 0. 论文故事线（研究思路，一页讲完）
 
-> 目标：**单篇文章，完整故事，定投 AJHG（IF 7.7，Article 类型）**。以下为论文的目标叙事；标注 ✅=已完成、🔲=计划中。完整破局方案见 `results/BREAKTHROUGH_PLAN_20260815.md`，对抗性评审见 `docs/verification_20260815.md`（2026-08-15，已按其修正叙事：降级 B/D、删"双介导/打哪里/新候选"三处过度声明、召回统计待分层重推）。
+> 目标：**单篇文章，完整故事，定投 AJHG（IF 7.7，Article 类型）**。以下为论文的目标叙事；标注 ✅=已完成、🔲=计划中。完整破局方案见 `results/BREAKTHROUGH_PLAN_20260815.md`，对抗性评审见 `docs/INTEGRITY_AUDIT_20260816.md（附录 A）`（2026-08-15，已按其修正叙事：降级 B/D、删"双介导/打哪里/新候选"三处过度声明、召回统计待分层重推）。
 
 **科学问题（一句）**：当一个共享的 cis 变异同时关联全血转录本（eQTL）与循环蛋白（pQTL）时，因果信号到底经哪个分子层作用于 T2D / CAD / FBG？
 
@@ -308,7 +308,7 @@ LD 下不收敛（exploratory，LAMC1 双排除）。**关键数字与复现统�
 | 药物注释 / 通路富集 / 证据简版 | `drug_annotation_20260813.md`、`pathway_enrichment_20260813.md`、`evidence_brief_20260813.md` |
 | 蛋白管线总结 | `DECODE_PIPELINE_SUMMARY.md` |
 | 预注册（哈希锁定） | `docs/PREREGISTRATION.md`（v0.1.0 + v5/v6/v7 修订） |
-| 2026-08-16 最终故事 / 审计 / 写作 / IF 建议 | `docs/FINAL_STORY_20260816.md` / `docs/INTEGRITY_AUDIT_20260816.md` / `docs/PAPER_WRITING_PLAN_20260816.md` / `docs/REVIEWER_IF_ADVICE_20260816.md` |
+| 2026-08-16 故事 / 写作 / 审计 / 审稿输入 | `docs/PAPER_WRITING_PLAN_20260816.md`（含故事·期刊·审稿输入）/ `docs/INTEGRITY_AUDIT_20260816.md` |
 | 23 新候选注释 / GTEx 复现 / 精度漏斗 / FinnGen 复现 | `results/m25_new_strong_annotation_20260816.csv` / `m25b_reclassify_20260816.csv` / `m26_gtex_replication_new23_20260816.csv` / `m27_precision_funnel_20260816.csv` / `m28_finngen_replication_new23_20260816.csv` |
 
 ---
@@ -346,7 +346,7 @@ LD 下不收敛（exploratory，LAMC1 双排除）。**关键数字与复现统�
 
 **A. 收尾当前故事（✅ 分析全完成，剩 commit）**：FinnGen R11 独立复现（M28 已完成）→ 图定稿（F1/F2 已并入 FinnGen 栏）→ 审计 P0 文档修复（已完成）→ README 同步 v0.13（本次完成）→ commit（push 暂缓）。
 
-**B. 写论文**：按 `docs/FINAL_STORY_20260816.md` 三股线（图谱资源 + 操作特性 + 15 候选）成文；主图 F1（精度漏斗）+ F6（候选基因 + 双复现）+ 全量图谱资源表。定投 AJHG（投稿准备指南见 `docs/AJHG_SUBMISSION_GUIDE_20260816.md`，图表精选 ≤7 个、摘要 ≤200 词）。
+**B. 写论文**：按 `docs/PAPER_WRITING_PLAN_20260816.md（附录 A）` 三股线（图谱资源 + 操作特性 + 15 候选）成文；主图 F1（精度漏斗）+ F6（候选基因 + 双复现）+ 全量图谱资源表。定投 AJHG（投稿准备指南见 `docs/AJHG_SUBMISSION_GUIDE_20260816.md`，图表精选 ≤7 个、摘要 ≤200 词）。
 
 **C. 不再开新分析战场**（判断：15 候选的下一步 SMR/功能验证超出纯干实验数据可得性，精度漏斗已把方法学故事说满，边际收益递减）。可选锦上添花（不进关键路径）：GTEx 扩到 49 组织、TWAS（FUSION）交叉验证、UKB 表型关联外延。
 
@@ -369,7 +369,7 @@ LD 下不收敛（exploratory，LAMC1 双排除）。**关键数字与复现统�
 
 ## 版本记录
 
-- **v0.14（2026-08-16）**：**FDR-core 口径统一（审稿修订 + 内容完整性验证收官）**——分结局 BH-FDR q<0.05 主口径：982 MR-sig / 121 strong（12.32%）/ 15 候选（9 known-locus + 6 弱；8 个 raw strong 掉出）；yield 12.32% 与 stage-2 grid 12.96% 收敛同报、召回 98.4%/87.6% 同报；Table_S1/S2 + cover_letter + FINAL_STORY + PAPER_WRITING_PLAN + AJHG_GUIDE + FACTS 全部同步 FDR-core；新增 `docs/SCHEMA_20260816.md`、`results/strong_all_subset_20260816.csv`（123 = 121 FDR-core + 2 灰区）、README「复现指南」流水线表；Word DOCX 重建（无 title page、Data availability 后置、1 表 9 图）；版本号 v0.13→v0.14。
+- **v0.14（2026-08-16）**：**FDR-core 口径统一（审稿修订 + 内容完整性验证收官）**——分结局 BH-FDR q<0.05 主口径：982 MR-sig / 121 strong（12.32%）/ 15 候选（9 known-locus + 6 弱；8 个 raw strong 掉出）；yield 12.32% 与 stage-2 grid 12.96% 收敛同报、召回 98.4%/87.6% 同报；Table_S1/S2 + cover_letter + PAPER_WRITING_PLAN（含故事/期刊/审稿输入）+ INTEGRITY_AUDIT + AJHG_GUIDE + FACTS 全部同步 FDR-core；新增 `docs/SCHEMA_20260816.md`、`results/strong_all_subset_20260816.csv`（123 = 121 FDR-core + 2 灰区）、README「复现指南」流水线表；Word DOCX 重建（无 title page、Data availability 后置、1 表 9 图）；版本号 v0.13→v0.14。
 - **v0.13（2026-08-16）**：全量扫描 M20–M24 + 新候选发现 M25/M25b + GTEx 复现 M26 + 精度漏斗 M27 + FinnGen 独立队列 M28（已完成：可定位子集 12/12 基因级 / 11/11 变异级方向一致、5 个 FinnGen p<0.05、覆盖 12/21）并入；主结论从"警示性阴性"升级为"图谱资源 + 操作特性 + 23 新候选"；摘要加 v0.13 段；§0 故事表 R1/R2 更新；§4.1 加全量扫描；新增 §4.7 新候选与复现；§2.2/§5 闭合 T2D N；§5 局限 7 改"已修"；§6/§8 更新定位（eBioMedicine 冲高判定不成立）；版本号 v0.12→v0.13。
 - **v0.12（2026-08-13）**：摘要加深化核查段 + 新增 §4.5 深化核查表 / §4.6 结果文档索引；§6 改为 A/B/C 三档下一步；§8 更新定位（置换标定 FP=1.45%、HEIDI 48.6%、GTEx 69.8%、一致率口径 106/819=12.9%）。〔注：2026-08-16 口径统一后 precision 修正为 106/818=12.96%，见 v0.13+〕
 - **v0.11（2026-08-13）**：蛋白通道 M3/M5 完成并入 README（蛋白 MR 主表 + 空结果 + 共定位 strong=2）；删除 deCODE"下载中"、watcher/cron/心跳、蛋白通道"待数据"等过期内容；四态分类加"工具可得性"诚实修正；数据表同步（INTERVAL 已测）；**首读统计量修正（nsnp≤3→FE，MRE SE 塌缩伪影，多 agent 评审）**；面向论文叙事重构（对称两通道 + 诚实局限 + 下一步 + 冲高路径）。
