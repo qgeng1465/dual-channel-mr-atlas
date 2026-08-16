@@ -41,7 +41,14 @@ FIG_FILES = {
     4: f"{FIGD}/20260816_Fig4_regional.png",
     5: f"{FIGD}/20260816_Fig5_candidates.png",
 }
-S1_FILE = f"{FIGD}/20260816_FigS1_susie.png"
+S_FILES = {
+    1: f"{FIGD}/20260817_FigS1_method_robustness.png",
+    2: f"{FIGD}/20260817_FigS2_steiger_ebayes.png",
+    3: f"{FIGD}/20260817_FigS3_rwr_combined.png",
+    4: f"{FIGD}/20260817_FigS4_cross_tissue.png",
+    5: f"{FIGD}/20260817_FigS5_phewas_volcano.png",
+    6: f"{FIGD}/20260817_FigS6_celltype_enrichment.png",
+}
 
 # combined inline tokenizer: **bold**, *italic*, [@key], <sup>…</sup>
 INLINE = re.compile(r"(\*\*[^*]+\*\*|\*[^*]+\*|\[@[a-z0-9]+\]|<sup>[^<]*</sup>)")
@@ -423,9 +430,17 @@ def main():
     if "Supplemental Items" in by_name:
         for kind, payload in parse_paragraph_blocks(by_name["Supplemental Items"]):
             if kind == "p":
-                if payload.startswith("**Supplemental Figure S1."):
-                    legend = payload[len("**Supplemental Figure S1.**"):].strip()
-                    add_figure_page(doc, "Supplemental Figure S1", S1_FILE, legend)
+                m = re.match(r"^\*\*Supplemental Figure S(\d)\.\s*(.*?)\*\*(.*)$", payload)
+                if m:
+                    n = int(m.group(1))
+                    title = m.group(2).strip().rstrip(".")
+                    rest = m.group(3).strip()
+                    legend = title + "." + (" " + rest if rest else "")
+                    img = S_FILES.get(n)
+                    if img and os.path.exists(img):
+                        add_figure_page(doc, f"Supplemental Figure S{n}", img, legend)
+                    else:
+                        print(f"  !! missing S-figure image: {img}")
                 elif payload.startswith("**Table S"):
                     add_caption(doc, payload)
                 else:
