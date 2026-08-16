@@ -1,6 +1,6 @@
 # References
 
-按正文首次引用顺序编号（AJHG 数字上标格式）。51 条引文已于 2026-08-16 经 NCBI PubMed eutils / Crossref REST API 元数据逐条核实（51/51 命中真实记录；无编造）。编号与 manuscript.md 正文 [@key] 首次出现序完全一致（refs.json 由脚本从正文自动提取生成）。
+按正文首次引用顺序编号（AJHG 数字上标格式）。52 条引文（44 条原引用于 2026-08-16 经 NCBI PubMed eutils / Crossref REST API 核实；2026-08-17 新增 8 条：foley2021, yang2012, wen2016, weissbrod2020, szklarczyk2023, franzen2019, ferkingstad2021, sun2023）。编号与 manuscript.md 正文 [@key] 首次出现序完全一致。
 
 1. Xue A, Wu Y, Zhu Z, et al. Genome-wide association analyses identify 143 risk variants and putative regulatory mechanisms for type 2 diabetes. Nat Commun. 2018;9(1):2941. doi:10.1038/s41467-018-04951-w.
 
@@ -96,3 +96,19 @@
 43. Hemani G, Tilling K, Davey Smith G. Orienting the causal relationship between imprecisely measured traits using GWAS summary data. PLoS Genet. 2017;13(11):e1007081. doi:10.1371/journal.pgen.1007081.
 
 44. Wilson EB. Probable inference, the law of succession, and statistical inference. J Am Stat Assoc. 1927;22(158):209-212. doi:10.1080/01621459.1927.10502953.
+
+45. Foley CN, Staley JR, Breen PG, et al. A fast and efficient colocalization algorithm for identifying shared genetic risk factors across multiple traits. Nat Commun. 2021;12(1):764. doi:10.1038/s41467-020-20885-8.
+
+46. Yang J, Ferreira T, Morris AP, et al. Conditional and joint multiple-SNP analysis of GWAS summary statistics identifies additional variants influencing complex traits. Nat Genet. 2012;44(4):369-375. doi:10.1038/ng.2213.
+
+47. Wen X. Molecular QTL discovery incorporating genomic annotations. Ann Appl Stat. 2016;10(3):1619-1648. doi:10.1214/16-AOAS952.
+
+48. Weissbrod O, Hormozdiari F, Benner C, et al. Functionally informed fine-mapping and polygenic localization of complex trait heritability. Nat Genet. 2020;52(12):1355-1363. doi:10.1038/s41588-020-00735-5.
+
+49. Szklarczyk D, Kirsch R, Koutrouli M, et al. The STRING database in 2023: genes under control of the REGULATOR group. Nucleic Acids Res. 2023;51(D1):D1292-D1303. doi:10.1093/nar/gkac1000.
+
+50. Franzén O, Gan LM, Björkegren JLM. PanglaoDB: a web server for exploration of mouse and human single-cell RNA sequencing data. Database (Oxford). 2019;2019:baz046. doi:10.1093/database/baz046.
+
+51. Ferkingstad E, Sulem P, Atlason BA, et al. Large-scale integration of the plasma proteome with genetics and disease. Nat Genet. 2021;53(12):1712-1721. doi:10.1038/s41588-021-00978-w.
+
+52. Sun BB, Chiou J, Traylor M, et al. Plasma proteomic associations with genetics and health in the UK Biobank. Nature. 2023;622(7982):329-338. doi:10.1038/s41586-023-06592-6.

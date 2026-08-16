@@ -1,0 +1,16 @@
+symbol,snp,n_traits,n_studies,n_hits,n_cardio,n_diabetes,n_cad,n_lipid,n_bmi,n_bp,n_noncardio,cross_domain,min_p,best_trait,top_cardio_traits,top_noncardio_traits,outcome,mr_p,is_new
+RBM6,rs10049087,1.0,1.0,1.0,0.0,0.0,0.0,0.0,0.0,0.0,1.0,True,6e-11,osteoarthritis,,osteoarthritis,t2d,1.02183794615947e-05,True
+SLC12A3,rs56228609,25.0,15.0,28.0,6.0,0.0,1.0,6.0,0.0,0.0,19.0,True,0.0,phospholipids:total lipids ratio,"coronary artery disorder; total cholesterol measurement; high density lipoprotein cholesterol measurement; depressive symptom measurement, low density lipoprotein cholesterol measurement; lifestyle measurement, non-high density lipoprotein cholesterol measurement; phospholipids:total lipids ratio",protein FAM177A1 measurement; protein measurement; level of Sterol ester (27:1/18:0) in blood serum; polyunsaturated fatty acids to monounsaturated fatty acids ratio; cholesteryl ester 18:0 measurement; level of phosphatidylcholine,cad,1.9731752900754102e-09,True
+CWF19L1,rs10430625,,,,,,,,,,,,,,,,t2d,0.0003150936635397,True
+CD101,rs10494191,1.0,1.0,1.0,0.0,0.0,0.0,0.0,0.0,0.0,1.0,True,6e-12,amount of immunoglobulin superfamily member 3 (human) in blood,,amount of immunoglobulin superfamily member 3 (human) in blood,t2d,0.0001163658554592,True
+C2orf49,rs4851758,1.0,1.0,2.0,0.0,0.0,0.0,0.0,0.0,0.0,1.0,True,4e-10,substance-related disorder,,substance-related disorder,t2d,1.90172751687517e-07,True
+CNNM2,rs11191447,2.0,2.0,3.0,2.0,0.0,3.0,0.0,0.0,0.0,0.0,False,1.0000000000000001e-23,coronary artery disorder,myocardial infarction; coronary artery disorder,,cad,9.85010679950938e-15,True
+CLEC3B,rs1004877,,,,,,,,,,,,,,,,t2d,0.0001319529291076,True
+RIC8A,rs6598075,,,,,,,,,,,,,,,,cad,4.87503845110966e-05,True
+PDCD6,rs12332382,,,,,,,,,,,,,,,,t2d,3.11056024514747e-05,True
+U6atac,rs12780155,2.0,4.0,5.0,2.0,4.0,0.0,0.0,0.0,1.0,0.0,False,3e-12,type 2 diabetes mellitus,"diastolic blood pressure, systolic blood pressure; type 2 diabetes mellitus",,t2d,1.70637513329084e-11,True
+PLAUR,rs4760,85.0,37.0,163.0,11.0,0.0,0.0,16.0,0.0,0.0,74.0,True,0.0,ENG/TNFRSF10C protein level ratio in blood,high density lipoprotein cholesterol measurement; triglyceride:HDL cholesterol ratio; cholesteryl esters in large HDL measurement; cholesterol in large HDL measurement; total lipids in large HDL; phospholipids in large HDL measurement,blood protein amount; lymphocyte count; lymphocyte percentage of leukocytes; leukocyte quantity; Red cell distribution width; neutrophil count,cad,2.00478689359048e-06,True
+TAGLN2,rs2789422,5.0,8.0,16.0,0.0,0.0,0.0,0.0,0.0,0.0,5.0,True,1e-70,platelet volume,,platelet volume; transgelin-2 measurement; immature platelet count; blood protein amount; platelet component distribution width,cad,2.62947160278819e-05,True
+CCDC19,rs2789422,5.0,8.0,16.0,0.0,0.0,0.0,0.0,0.0,0.0,5.0,True,1e-70,platelet volume,,platelet volume; transgelin-2 measurement; immature platelet count; blood protein amount; platelet component distribution width,cad,2.6294716027882e-05,True
+VSIG8,rs2789422,5.0,8.0,16.0,0.0,0.0,0.0,0.0,0.0,0.0,5.0,True,1e-70,platelet volume,,platelet volume; transgelin-2 measurement; immature platelet count; blood protein amount; platelet component distribution width,cad,2.62947160278819e-05,True
+N4BP2L2,rs1123462,,,,,,,,,,,,,,,,cad,1.17709270278885e-09,True

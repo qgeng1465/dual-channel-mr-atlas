@@ -58,7 +58,7 @@ Genome-wide association studies (GWAS) have identified hundreds of loci for type
 ## Repository structure
 
 ```
-scripts/   All analysis scripts (M20–M28, M33–M38; see Reproducibility)
+scripts/   All analysis scripts (M20–M28, M33–M49; see Reproducibility)
 results/   All result tables (CSV), summary statistics, and figures
   coloc_full_{t2d,cad,fbg}_20260815.csv   full scan output (31,373 pairs)
   fdr_core_20260816.csv                   FDR-core MR-significant set (982)
@@ -85,7 +85,17 @@ The full pipeline (input → script → output) is documented in the analysis sc
 | FinnGen R11 independent-cohort replication | `M28` | FinnGen R11 sumstats | `results/m28_finngen_replication_new23_20260816.csv` |
 | **Per-outcome BH-FDR recomputation (FDR-core)** | `M36b_fdr_recompute_20260816.py` | `coloc_full_*` + grid | `results/fdr_core_20260816.csv`, `candidate15_replication_20260816.csv`, `m36b_funnel_20260816.csv` |
 | coloc.susie sensitivity (exploratory) | `M34b` | 6 loci + 1000G EUR LD | `results/m34_coloc_susie_20260816.csv` |
-| Figures (5 main + S1) | `M37` / `M38` | result tables | `results/figures/20260816_Fig{1..5}_*.png`, `FigS1_susie.png` |
+| **Ridge-shrunk LD sweep (coloc.susie recovery)** | `M34c_coloc_susie_ridge.sh` | M34b aligned z/R | `results/m34c_coloc_susie_ridge_20260817.csv` |
+| **Hyprcoloc 2-trait cross-check** | `M40_hyprcoloc_2trait_20260817.R` | eQTLGen + GWAS + 1000G LD | `results/m40_hyprcoloc_2trait_20260817.csv` |
+| **GCTA-COJO conditional/joint fine-mapping** | `M46_cojo_slct_20260817.sh` | OpenGWAS + 1000G EUR bfile | `results/m46_cojo_20260817.csv` |
+| **MR-Steiger corrected direction (15 candidates)** | `M44_steiger_corrected_20260817.R` | candidate15 + eQTLGen + GWAS | `results/m44_steiger_corrected_20260817.csv` |
+| **Empirical-Bayes coloc enrichment (TORUS/fastENLOC-style)** | `M45_ebayes_enrichment_20260817.py` | coloc_full + FDR-core | `results/m45_ebayes_summary_20260817.csv` |
+| **STRING RWR network proximity** | `M39_rwr_network_20260817.py` | STRING v12 + 106 seeds | `results/m39_rwr_20260817.csv` |
+| **Cross-tissue lead-eQTL concordance (GTEx v8)** | `M40a_cross_tissue_20260817.py` | GTEx v8 egenes | `results/m40a_cross_tissue_20260817.csv` |
+| **PheWAS pleiotropy screen (GWAS Catalog)** | `M41_phewas_catalog_20260817.py` | GWAS Catalog + 13 leads | `results/m41_phewas_snp_20260817.csv` |
+| **Cell-type enrichment (PanglaoDB)** | `M43_celltype_enrichment_20260817.py` | PanglaoDB markers | `results/m43_celltype_20260817.csv` |
+| **pQTL coverage (deCODE/UKB-PPP)** | `M42_pqtl_coverage_20260817.py` | OpenGWAS pQTL | `results/m42_pqtl_coverage_20260817.csv`, `m42_pqtl_summary_20260817.csv` |
+| Figures (5 main + S1–S6) | `M37` / `M38` / `M47`–`M49` | result tables | `results/figures/20260816_Fig{1..5}_*.png`, `20260817_FigS{1..6}_*.png` |
 | Word manuscript | `M36_build_word_ajhg_20260816.py` | `docs/manuscript/*` | `docs/manuscript/AJHG_submission_Qiushuo_Geng_20260816.docx` |
 
 **Path placeholders.** Scripts use portable placeholders instead of machine-specific paths: `<repo-root>` (repository root), `<scratch>` (staging directory for downloaded source data), and `<conda-root>` (R environment prefix). Replace them with your local paths before re-running; bulk source data (eQTLGen, OpenGWAS, GTEx, FinnGen, 1000 Genomes) must be downloaded separately.

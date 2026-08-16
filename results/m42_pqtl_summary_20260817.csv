@@ -1,0 +1,2 @@
+n_candidates,n_with_local_pqtl,local_pqtl_proteins,n_local_pqtl_proteins,known_genes_with_local_pqtl,n_known_genes_with_local_pqtl,api_status,conclusion
+15,0,ANGPTL3;APOB;APOC3;DPP4;GCG;GLP1R;HMGCR;INSR;LDLR;PCK1;PCSK9,11,,0,OpenGWAS gwas-api.mrcieu.ac.uk unreachable; api.opengwas.io requires auth (401),3-track central-dogma integration infeasible for 15 candidates with available data

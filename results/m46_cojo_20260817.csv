@@ -1,0 +1,7 @@
+symbol,outcome,lead_snp,n_index_p5e8,n_index_p1e4,lead_in_index,lead_pC,lead_pJ,index_snps,notes
+RBM6,t2d,rs10049087,0,4,False,,,rs7634084;rs112524388;rs2526748;rs17225749,lead col-linear with a selected signal (bC/pC=NA)
+CD101,t2d,rs10494191,4,4,False,,,rs6687760;rs1127655;rs1127215;rs17235773,lead excluded by collinearity/freq filter (not in conditional output)
+CNNM2,cad,rs11191447,1,2,False,,,rs3740390;rs35647154,lead col-linear with a selected signal (bC/pC=NA)
+PLAUR,cad,rs4760,0,1,True,,2.00663e-06,rs4760,lead indexes an independent signal
+RIC8A,cad,rs6598075,0,1,False,0.707762,,rs1533824,lead not significant conditional on index signal (pC=0.71)
+LAMC1,cad,rs10458355,0,1,False,0.660246,,rs10797824,lead not significant conditional on index signal (pC=0.66)
